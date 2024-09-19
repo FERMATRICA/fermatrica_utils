@@ -1,0 +1,9 @@
+python-dateutil>=2.9.0
+line_profiler_pycharm>=1.1.0
+pathlib>=1.0.1
+numpy>=1.25.2
+pandas>=2.0.3
+patsy>=0.5.3
+urllib3>=2.1.0
+cyrtranslit>=1.1.0
+packaging>=24.0
