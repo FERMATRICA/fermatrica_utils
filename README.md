@@ -34,11 +34,7 @@ To facilitate work, it is recommended to install all components of the FERMATRIC
     ```
    1. To work with the interactive dashboard: _coming soon_
     2. For preliminary data work: _coming soon_
-3. In each of the repositories, select the FERMATRICA_v010 environment (FERMATRICA_v020, FERMATRICA_v030, etc.) through Add interpreter in the PyCharm interface and switch to the corresponding git branch.
-    ```commandline
-    cd [my_fermatrica_folder]/[fermatrica_part_folder]
-    git checkout v010 [v020, v030...]
-    ```
+3. In each of the repositories, select the FERMATRICA_v010 environment (FERMATRICA_v020, FERMATRICA_v030, etc.) through `Add interpreter` in the PyCharm interface
 4. Install all cloned packages except FERMATRICA_DASH using pip install.
     ```commandline
     cd [my_fermatrica_folder]/[fermatrica_part_folder]
@@ -86,11 +82,7 @@ To facilitate work, it is recommended to install all components of the FERMATRIC
     ```
     - Для работы с интерактивным дашбордом: _coming soon_
    - Для предварительной работы с данными: _coming soon_
-3. В каждом из репозиториев выберите среду FERMATRICA_v010 (FERMATRICA_v020, FERMATRICA_v030 и т.д.) через `Add interpreter` (в интерфейсе PyCharm) и переключитесь в соответствующую ветку гита
-    ```commandline
-    cd [my_fermatrica_folder]/[fermatrica_part_folder]
-    git checkout v010 [v020, v030...]
-    ```
+3. В каждом из репозиториев выберите среду FERMATRICA_v010 (FERMATRICA_v020, FERMATRICA_v030 и т.д.) через `Add interpreter` (в интерфейсе PyCharm)
 4. Установите все склонированные пакеты, кроме FERMATRICA_DASH, используя `pip install`
     ```commandline
     cd [my_fermatrica_folder]/[fermatrica_part_folder]
