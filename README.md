@@ -1,5 +1,58 @@
 # FERMATRICA_UTILS
 
+[_Russian version below_](#RU)
+
+Universal functionality for FERMATRICA.
+
+### 1. Key Ideas
+This repository contains the most basic/fundamental functionality that is not specific to marketing mix modeling and, in general, two-contour modeling of time series/panel models.
+
+The functionality of FERMATRICA_UTILS can be used both within the FERMATRICA framework and independently of it.
+
+### 2. Components
+
+- Working with the operating system/files and folders (`fermatrica_utils.os`)
+- Working with objects/classes (`fermatrica_utils.objects`)
+- Dynamic/non-standard code execution (`fermatrica_utils.flow`)
+- Arrays (including pandas data frames and series) (`fermatrica_utils.arrays`)
+- Mathematical functions and objects (`fermatrica_utils.math`)
+- Data/datasets (something more specific than arrays) (`fermatrica_utils.data`)
+
+### 3. Installation
+
+To facilitate work, it is recommended to install all components of the FERMATRICA framework. It is assumed that work will be conducted in PyCharm (VScode is OK also for sure).
+
+1. Create a Python virtual environment of your choice (Anaconda, Poetry, etc.) or use a previously created one. It makes sense to establish a separate virtual environment for econometric tasks and for every new version of FERMATRICA.
+    1. Mini-guide on virtual environments (external): https://blog.sedicomm.com/2021/06/29/chto-takoe-venv-i-virtualenv-v-python-i-kak-ih-ispolzovat/
+    2. For framework version v010, let the virtual environment be named FERMATRICA_v010.
+2. Clone the FERMATRICA repositories to a location of your choice.
+    ```commandline
+    cd [my_fermatrica_folder]
+    git clone https://github.com/FERMATRICA/fermatrica_utils.git 
+    git clone https://github.com/FERMATRICA/fermatrica.git
+    git clone https://github.com/FERMATRICA/fermatrica_rep.git 
+    ```
+   1. To work with the interactive dashboard: _coming soon_
+    2. For preliminary data work: _coming soon_
+3. In each of the repositories, select the FERMATRICA_v010 environment (FERMATRICA_v020, FERMATRICA_v030, etc.) through Add interpreter in the PyCharm interface and switch to the corresponding git branch.
+    ```commandline
+    cd [my_fermatrica_folder]/[fermatrica_part_folder]
+    git checkout v010 [v020, v030...]
+    ```
+4. Install all cloned packages except FERMATRICA_DASH using pip install.
+    ```commandline
+    cd [my_fermatrica_folder]/[fermatrica_part_folder]
+    pip install .
+    ```
+   1. Instead of navigating to each project's folder, you can specify the path to it in pip install:
+       ```commandline
+       pip install [path_to_fermatrica_part]
+       ```
+5. If necessary, install third-party packages/libraries required for the functioning of FERMATRICA using `conda install` or `pip install`. To update versions of third-party packages, use `conda update` or `pip install -U`.
+
+-------------------------------------
+
+<a name="RU"></a>
 Универсальный функционал для FERMATRICA.
 
 ### 1. Ключевые идеи
@@ -31,14 +84,8 @@
     git clone https://github.com/FERMATRICA/fermatrica.git
     git clone https://github.com/FERMATRICA/fermatrica_rep.git 
     ```
-    - Для работы с интерактивным дашбордом клонируйте и его репозиторий
-   ```commandline
-   git clone https://github.com/FERMATRICA/fermatrica_dash.git 
-   ```
-   - Для предварительной работы с данными
-   ```commandline
-   git clone https://github.com/FERMATRICA/fermatrica_data.git
-   ```
+    - Для работы с интерактивным дашбордом: _coming soon_
+   - Для предварительной работы с данными: _coming soon_
 3. В каждом из репозиториев выберите среду FERMATRICA_v010 (FERMATRICA_v020, FERMATRICA_v030 и т.д.) через `Add interpreter` (в интерфейсе PyCharm) и переключитесь в соответствующую ветку гита
     ```commandline
     cd [my_fermatrica_folder]/[fermatrica_part_folder]
