@@ -177,7 +177,7 @@ def sanitize_numeric(val) -> float:
         except ValueError:
             val = 0.0
 
-    if pd.isna(val) or val == np.Inf:
+    if pd.isna(val) or val == np.inf:
         val = 0.0
 
     return val
@@ -199,7 +199,7 @@ def sanitize_int(val) -> int:
         except ValueError:
             val = 0
 
-    if pd.isna(val) or val == np.Inf:
+    if pd.isna(val) or val == np.inf:
         val = 0
 
     return val
