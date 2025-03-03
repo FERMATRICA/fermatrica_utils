@@ -72,7 +72,7 @@ def columns_normalize_df(ds: pd.DataFrame):
     ds.columns = ds.columns.str.replace(r'( +)|(_+)', '_', regex=True)
     ds.columns = ds.columns.str.replace(r'[_\.]+', '_', regex=True)
     ds.columns = ds.columns.str.strip(r' \.\_').str.lower()
-    ds.columns = cyrillic_trans(ds.columns)
+    ds.columns = cyrillic_trans(ds.columns, cyr_dict='cyr_dict_1')
 
     return ds
 
