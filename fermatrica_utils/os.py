@@ -224,6 +224,31 @@ def sanitize_bool(val) -> bool:
     return val
 
 
+def sanitize_date_string(val
+                         , date_format: str = '%Y-%m-%dT%H:%M:%S'):
+    """
+    Sanitize input known to be date from string. Check date format codes here:
+    https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+
+    :param val:
+    :param date_format: string representing date format according to C standard
+    :return:
+    """
+
+    if not isinstance(val, (str, int, float, bool)):
+        val = datetime.strptime('1970-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S')
+    else:
+        val = str(val)
+        val = sanitize_string(val)
+
+        try:
+            val = datetime.strptime(val, date_format).date()
+        except ValueError:
+            val = datetime.strptime('1970-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S')
+
+    return val
+
+
 def sanitize_datetime_string(val
                              , date_format: str = '%Y-%m-%dT%H:%M:%S'):
     """
@@ -236,15 +261,15 @@ def sanitize_datetime_string(val
     """
 
     if not isinstance(val, (str, int, float, bool)):
-        val = '1970-01-01T00:00:00'
+        val = datetime.strptime('1970-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S')
     else:
         val = str(val)
         val = sanitize_string(val)
 
         try:
-            val = datetime.strptime(val, date_format).date()
+            val = datetime.strptime(val, date_format)
         except ValueError:
-            val = '1970-01-01T00:00:00'
+            val = datetime.strptime('1970-01-01T00:00:00', '%Y-%m-%dT%H:%M:%S')
 
     return val
 
