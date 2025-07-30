@@ -11,8 +11,6 @@ import re
 import cyrtranslit
 from pandas.core.dtypes.common import is_object_dtype, is_string_dtype
 
-import fermatrica_utils
-import fermatrica_utils.arrays.arrays
 from fermatrica_utils.arrays.arrays import list_unique, list_select
 from fermatrica_utils.primitives.string import cyrillic_trans
 
@@ -147,7 +145,7 @@ def excel_sheets_look(dr: str
     :return:
     """
 
-    fls = os.listdir(dr)
+    fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx')]
     if ptrn_incl is not None:
         fls = list_select(ptrn_incl, fls, True, True)
     if ptrn_excl is not None:
@@ -244,7 +242,7 @@ def excel_get_col_vals(dr: str
 
     fl_values = {}
 
-    fls = os.listdir(dr)
+    fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx')]
     for fl in fls:
 
         name = re.sub('\\.xlsx', '', fl)
@@ -293,7 +291,7 @@ def excel_get_row_vals(dr: str
 
     fl_vals = {}
 
-    fls = os.listdir(dr)
+    fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx')]
     for fl in fls:
         name = re.sub('\\.xlsx', '', fl)
         pth = os.path.join(dr, fl)
@@ -305,9 +303,9 @@ def excel_get_row_vals(dr: str
             df = pd.read_excel(pth, sht, header=None)
 
             if isinstance(row, int):
-                vals.extend(list(fermatrica_utils.arrays.arrays.unique()))
+                vals.extend(list(df.iloc[row, start_col:].dropna().unique()))
             if isinstance(row, list):
-                tmp = df.iloc[row, start_col:]
+                tmp = df.loc[row, start_col:]
                 tmp.dropna(axis=1, how='all', inplace=True)
                 tmp.fillna(method='ffill', axis=1, inplace=True)
 
@@ -340,7 +338,8 @@ def excel_get_row_vals(dr: str
     return res
 
 
-def excel_get_cols(dr: str, shts_dct: dict | None = None
+def excel_get_cols(dr: str
+                   , shts_dct: dict | None = None
                    , skip_rows: int | None = None
                    , cl_pat: str | None = None
                    , get_vals: bool = False
@@ -351,7 +350,6 @@ def excel_get_cols(dr: str, shts_dct: dict | None = None
 
     :param dr:
     :param shts_dct:
-    :param head:
     :param skip_rows:
     :param cl_pat:
     :param get_vals:
@@ -362,7 +360,7 @@ def excel_get_cols(dr: str, shts_dct: dict | None = None
 
     fl_shts_cls = {}
 
-    fls = os.listdir(dr)
+    fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx')]
 
     for fl in fls:
         name = re.sub('\\.xlsx', '', fl)
@@ -437,7 +435,7 @@ def excel_df_look(dr: str
     """
 
     if shts_dict is None:
-        fls = os.listdir(dr)
+        fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx')]
     else:
         fls = list(shts_dict.keys())
 

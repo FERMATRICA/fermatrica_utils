@@ -53,12 +53,18 @@ def ts_decompose(ds: pd.DataFrame
     match period_var:
         case 'quarter':
             frq = 4
+            season_stl_val=5
+            trend_stl_val=7
             ds['period'] = ds.date.dt.quarter
         case 'week':
             frq = 52
+            season_stl_val=55
+            trend_stl_val=75
             ds['period'] = ds.date.dt.strftime("%V")
         case 'month':
             frq = 12
+            season_stl_val=13
+            trend_stl_val=17
             ds['period'] = ds.date.dt.month
 
     if n_fourier is None and return_comp == 'season_fourier':
@@ -101,12 +107,12 @@ def ts_decompose(ds: pd.DataFrame
             ds = pd.merge(ds, longest_interval[['date', 'ssn']], on=['date'], how='left')
             ds['ssn'] = na_ma(ds['ssn'])
         elif return_comp == "trend_stl":
-            longest_interval['ssn'] = statsmodels.tsa.seasonal.STL(ts_t, seasonal=7, trend=13,
+            longest_interval['ssn'] = statsmodels.tsa.seasonal.STL(ts_t, seasonal=season_stl_val, trend=trend_stl_val,
                                                                    period=frq).fit().trend.values
             ds = pd.merge(ds, longest_interval[['date', 'ssn']], on=['date'], how='left')
             ds['ssn'] = na_ma(ds['ssn'])
         elif return_comp == "random_stl":
-            longest_interval['ssn'] = statsmodels.tsa.seasonal.STL(ts_t, seasonal=7, trend=13,
+            longest_interval['ssn'] = statsmodels.tsa.seasonal.STL(ts_t, seasonal=season_stl_val, trend=trend_stl_val,
                                                                    period=frq).fit().resid.values
             ds = pd.merge(ds, longest_interval[['date', 'ssn']], on=['date'], how='left')
             ds['ssn'] = na_ma(ds['ssn'])

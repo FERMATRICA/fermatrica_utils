@@ -96,13 +96,12 @@ def like_str(pattern: str
 
 
 def cyrillic_trans_str(string: str
-                       , cyr_dict: str | dict | None = None):
+                       , cyr_dict: str | dict | None = 'cyr_dict_1'):
     """
     Transcribes Cyrillic letters to Latin, string input (not vectorized)
 
     :param string:
     :param cyr_dict:
-    :param inplace:
     :return:
     """
 
@@ -116,7 +115,7 @@ def cyrillic_trans_str(string: str
                                    'Check dictionary name spelling or pass the full dictionary as the param')
 
     elif cyr_dict is None or cyr_dict is False:
-        cyr_dict = cyr_dict_2
+        cyr_dict = cyr_dict_1
 
     # run transcription
 
@@ -126,7 +125,7 @@ def cyrillic_trans_str(string: str
 
 
 def cyrillic_trans(sr: pd.Series | pd.Index | list | np.ndarray
-                   , cyr_dict: str | dict | None = None) ->(
+                   , cyr_dict: str | dict | None = 'cyr_dict_1') ->(
         np.ndarray | pd.api.extensions.ExtensionArray | pd.Series | pd.Index):
     """
     Transcribes Cyrillic letters to Latin, array input (vectorized)
@@ -146,7 +145,7 @@ def cyrillic_trans(sr: pd.Series | pd.Index | list | np.ndarray
                                    'Check dictionary name spelling or pass the full dictionary as the param')
 
     elif cyr_dict is None or cyr_dict is False:
-        cyr_dict = cyr_dict_2
+        cyr_dict = cyr_dict_1
 
     if_series = True
     if not isinstance(sr, pd.Series) and not isinstance(sr, pd.Index):

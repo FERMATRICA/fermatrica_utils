@@ -323,6 +323,8 @@ def list_select(search: str | list
     :return:
     """
 
+    rtrn = ''
+
     if isinstance(search, str):
         if match:
             if include:
@@ -335,9 +337,7 @@ def list_select(search: str | list
             else:
                 rtrn = [e for e in lst if not re.search(search, e)]
 
-        return rtrn
-
-    if isinstance(search, list):
+    elif isinstance(search, list):
         rtrn = {}
         if match:
             if include:
@@ -356,7 +356,7 @@ def list_select(search: str | list
 
         rtrn = pd.DataFrame.from_dict(rtrn, orient='index')
 
-        return rtrn
+    return rtrn
 
 
 def list_select_pat(search: str
