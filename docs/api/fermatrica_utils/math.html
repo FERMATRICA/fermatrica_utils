@@ -66,11 +66,11 @@ For time series operations see <code><a href="arrays/ts.html">fermatrica_utils.a
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="k">def</span> <span class="nf">weighted_mean_group</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="k">def</span><span class="w"> </span><span class="nf">weighted_mean_group</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>                        <span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>                        <span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>                        <span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -105,7 +105,7 @@ For time series operations see <code><a href="arrays/ts.html">fermatrica_utils.a
 </span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>
 </span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="k">def</span> <span class="nf">round_up_to_odd</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="k">def</span><span class="w"> </span><span class="nf">round_up_to_odd</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">):</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">    Rounds to the nearest odd integer</span>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>
@@ -132,7 +132,7 @@ For time series operations see <code><a href="arrays/ts.html">fermatrica_utils.a
 
     </div>
     <a class="headerlink" href="#weighted_mean_group"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="weighted_mean_group-12"><a href="#weighted_mean_group-12"><span class="linenos">12</span></a><span class="k">def</span> <span class="nf">weighted_mean_group</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="weighted_mean_group-12"><a href="#weighted_mean_group-12"><span class="linenos">12</span></a><span class="k">def</span><span class="w"> </span><span class="nf">weighted_mean_group</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="weighted_mean_group-13"><a href="#weighted_mean_group-13"><span class="linenos">13</span></a>                        <span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="weighted_mean_group-14"><a href="#weighted_mean_group-14"><span class="linenos">14</span></a>                        <span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="weighted_mean_group-15"><a href="#weighted_mean_group-15"><span class="linenos">15</span></a>                        <span class="p">,</span> <span class="n">by</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -197,7 +197,7 @@ mean requires two columns: values and weights</p>
 
     </div>
     <a class="headerlink" href="#round_up_to_odd"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="round_up_to_odd-47"><a href="#round_up_to_odd-47"><span class="linenos">47</span></a><span class="k">def</span> <span class="nf">round_up_to_odd</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="round_up_to_odd-47"><a href="#round_up_to_odd-47"><span class="linenos">47</span></a><span class="k">def</span><span class="w"> </span><span class="nf">round_up_to_odd</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">):</span>
 </span><span id="round_up_to_odd-48"><a href="#round_up_to_odd-48"><span class="linenos">48</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="round_up_to_odd-49"><a href="#round_up_to_odd-49"><span class="linenos">49</span></a><span class="sd">    Rounds to the nearest odd integer</span>
 </span><span id="round_up_to_odd-50"><a href="#round_up_to_odd-50"><span class="linenos">50</span></a>

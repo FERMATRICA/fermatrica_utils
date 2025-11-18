@@ -17,3 +17,4 @@ tmp/
 *.pclprof
 *__pycache__
 *.egg-info/
+.vscode/

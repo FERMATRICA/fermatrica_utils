@@ -79,14 +79,14 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos">  3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span> <span class="nn">re</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">from</span> <span class="nn">line_profiler_pycharm</span> <span class="kn">import</span> <span class="n">profile</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">line_profiler_pycharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span> <span class="nn">fermatrica_utils.arrays.arrays</span> <span class="kn">import</span> <span class="n">list_select</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span> <span class="nn">fermatrica_utils.flow</span> <span class="kn">import</span> <span class="n">fermatrica_utils_error</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">fermatrica_utils.arrays.arrays</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_select</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">fermatrica_utils.flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">fermatrica_utils_error</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="n">cyr_dict_1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;а&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
@@ -158,7 +158,7 @@
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>              <span class="s1">&#39;я&#39;</span><span class="p">:</span> <span class="s1">&#39;ya&#39;</span><span class="p">}</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="k">def</span> <span class="nf">like_str</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="k">def</span><span class="w"> </span><span class="nf">like_str</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>             <span class="p">,</span> <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">    Effectively alias for `re.search()` with strictly boolean output</span>
@@ -171,119 +171,124 @@
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">))</span>
 </span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>
 </span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="k">def</span> <span class="nf">cyrillic_trans_str</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>                       <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cyrillic_trans_str</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>                       <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">):</span>
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="sd">    Transcribes Cyrillic letters to Latin, string input (not vectorized)</span>
 </span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="sd">    :param string:</span>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="sd">    :param cyr_dict:</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    :param inplace:</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    :return:</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>    <span class="c1"># run transcription</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">))</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>    <span class="k">return</span> <span class="n">string</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="sd">    :return:</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>    <span class="c1"># run transcription</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">))</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>    <span class="k">return</span> <span class="n">string</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>
 </span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="k">def</span> <span class="nf">cyrillic_trans</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>                   <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span><span class="p">(</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">ExtensionArray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    Transcribes Cyrillic letters to Latin, array input (vectorized)</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    :param sr:</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    :param cyr_dict:</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    :return:</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="n">if_series</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>        <span class="n">if_series</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>
-</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>    <span class="c1"># run transcription</span>
-</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>
-</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">)</span>
-</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rtrn</span><span class="p">)</span>
-</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>
-</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>    <span class="c1"># return</span>
-</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>
-</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">if_series</span><span class="p">:</span>
-</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="n">rtrn</span><span class="o">.</span><span class="n">array</span>
-</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>
-</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cyrillic_trans</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>                   <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">)</span> <span class="o">-&gt;</span><span class="p">(</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">ExtensionArray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    Transcribes Cyrillic letters to Latin, array input (vectorized)</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    :param sr:</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    :param cyr_dict:</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    :return:</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="n">if_series</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="n">if_series</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>
+</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>    <span class="c1"># run transcription</span>
+</span><span id="L-156"><a href="#L-156"><span class="linenos">156</span></a>
+</span><span id="L-157"><a href="#L-157"><span class="linenos">157</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">)</span>
+</span><span id="L-158"><a href="#L-158"><span class="linenos">158</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rtrn</span><span class="p">)</span>
+</span><span id="L-159"><a href="#L-159"><span class="linenos">159</span></a>
+</span><span id="L-160"><a href="#L-160"><span class="linenos">160</span></a>    <span class="c1"># return</span>
+</span><span id="L-161"><a href="#L-161"><span class="linenos">161</span></a>
+</span><span id="L-162"><a href="#L-162"><span class="linenos">162</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">if_series</span><span class="p">:</span>
+</span><span id="L-163"><a href="#L-163"><span class="linenos">163</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="n">rtrn</span><span class="o">.</span><span class="n">array</span>
+</span><span id="L-164"><a href="#L-164"><span class="linenos">164</span></a>
+</span><span id="L-165"><a href="#L-165"><span class="linenos">165</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
+</span><span id="L-166"><a href="#L-166"><span class="linenos">166</span></a>
 </span><span id="L-167"><a href="#L-167"><span class="linenos">167</span></a>
-</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a>
-</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a><span class="k">def</span> <span class="nf">latru_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>                 <span class="p">,</span> <span class="n">if_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="sd">    Detects if string is in Latin, Russian or mixed letters. Useful if Cyrillic-Latin transcription is not an option</span>
-</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>
-</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a><span class="sd">    :param string:</span>
-</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    :param if_verbose:</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    :return:</span>
-</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>
-</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>    <span class="n">string_spl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</span><span id="L-168"><a href="#L-168"><span class="linenos">168</span></a><span class="k">def</span><span class="w"> </span><span class="nf">latru_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-169"><a href="#L-169"><span class="linenos">169</span></a>                 <span class="p">,</span> <span class="n">if_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-170"><a href="#L-170"><span class="linenos">170</span></a>                 <span class="p">,</span> <span class="n">full_return</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-171"><a href="#L-171"><span class="linenos">171</span></a>                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+</span><span id="L-172"><a href="#L-172"><span class="linenos">172</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a><span class="sd">    Detects if string is in Latin, Russian or mixed letters. Useful if Cyrillic-Latin transcription is not an option</span>
+</span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
+</span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="sd">    :param string:</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="sd">    :param full_return:</span>
+</span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a><span class="sd">    :param if_verbose:</span>
+</span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="sd">    :return:</span>
+</span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">string_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">string_spl</span><span class="p">)</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>    <span class="n">string_spl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 </span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>
-</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">rus_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^А-Яа-я]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>    <span class="n">lat_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^A-Za-z]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>
-</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="k">if</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">):</span>
-</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;latin&#39;</span>
-</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">elif</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">):</span>
-</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;russian&#39;</span>
-</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;mixed&#39;</span>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>
-</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>    <span class="k">if</span> <span class="n">if_verbose</span><span class="p">:</span>
-</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">string</span> <span class="o">+</span> <span class="s1">&#39;: language = &#39;</span> <span class="o">+</span> <span class="n">lng</span><span class="p">)</span>
-</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latin letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">))</span>
-</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;russian letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">))</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>
-</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>    <span class="k">return</span> <span class="n">lng</span><span class="p">,</span> <span class="n">lat_letters</span><span class="p">,</span> <span class="n">rus_letters</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>    <span class="n">string_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">string_spl</span><span class="p">)</span>
+</span><span id="L-184"><a href="#L-184"><span class="linenos">184</span></a>
+</span><span id="L-185"><a href="#L-185"><span class="linenos">185</span></a>    <span class="n">rus_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^A-Za-z]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</span><span id="L-186"><a href="#L-186"><span class="linenos">186</span></a>    <span class="n">lat_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^А-Яа-я]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</span><span id="L-187"><a href="#L-187"><span class="linenos">187</span></a>
+</span><span id="L-188"><a href="#L-188"><span class="linenos">188</span></a>    <span class="k">if</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">):</span>
+</span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;latin&#39;</span>
+</span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>    <span class="k">elif</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">):</span>
+</span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;russian&#39;</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;mixed&#39;</span>
+</span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>
+</span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>    <span class="k">if</span> <span class="n">if_verbose</span><span class="p">:</span>
+</span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">string</span> <span class="o">+</span> <span class="s1">&#39;: language = &#39;</span> <span class="o">+</span> <span class="n">lng</span><span class="p">)</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latin letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">))</span>
+</span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;russian letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">))</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>
-</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>
-</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a><span class="nd">@profile</span>
-</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a><span class="k">def</span> <span class="nf">cyrillic_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a><span class="sd">    Checks if string contains Cyrillic letters</span>
+</span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>    <span class="k">if</span> <span class="n">full_return</span><span class="p">:</span>
+</span><span id="L-201"><a href="#L-201"><span class="linenos">201</span></a>        <span class="k">return</span> <span class="n">lng</span><span class="p">,</span> <span class="n">lat_letters</span><span class="p">,</span> <span class="n">rus_letters</span>
+</span><span id="L-202"><a href="#L-202"><span class="linenos">202</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="L-203"><a href="#L-203"><span class="linenos">203</span></a>        <span class="k">return</span> <span class="n">lng</span>
+</span><span id="L-204"><a href="#L-204"><span class="linenos">204</span></a>
 </span><span id="L-205"><a href="#L-205"><span class="linenos">205</span></a>
-</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="sd">    :param string:</span>
-</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="sd">    :return:</span>
-</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a>
-</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;[а-яА-Я]&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">))</span>
+</span><span id="L-206"><a href="#L-206"><span class="linenos">206</span></a><span class="nd">@profile</span>
+</span><span id="L-207"><a href="#L-207"><span class="linenos">207</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cyrillic_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="L-208"><a href="#L-208"><span class="linenos">208</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-209"><a href="#L-209"><span class="linenos">209</span></a><span class="sd">    Checks if string contains Cyrillic letters</span>
+</span><span id="L-210"><a href="#L-210"><span class="linenos">210</span></a>
+</span><span id="L-211"><a href="#L-211"><span class="linenos">211</span></a><span class="sd">    :param string:</span>
+</span><span id="L-212"><a href="#L-212"><span class="linenos">212</span></a><span class="sd">    :return:</span>
+</span><span id="L-213"><a href="#L-213"><span class="linenos">213</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-214"><a href="#L-214"><span class="linenos">214</span></a>
+</span><span id="L-215"><a href="#L-215"><span class="linenos">215</span></a>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;[а-яА-Я]&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">))</span>
 </span></pre></div>
 
 
@@ -325,7 +330,7 @@
 
     </div>
     <a class="headerlink" href="#like_str"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="like_str-86"><a href="#like_str-86"><span class="linenos">86</span></a><span class="k">def</span> <span class="nf">like_str</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="like_str-86"><a href="#like_str-86"><span class="linenos">86</span></a><span class="k">def</span><span class="w"> </span><span class="nf">like_str</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="like_str-87"><a href="#like_str-87"><span class="linenos">87</span></a>             <span class="p">,</span> <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="like_str-88"><a href="#like_str-88"><span class="linenos">88</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="like_str-89"><a href="#like_str-89"><span class="linenos">89</span></a><span class="sd">    Effectively alias for `re.search()` with strictly boolean output</span>
@@ -358,40 +363,39 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cyrillic_trans_str</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">):</span></span>
+        <span class="name">cyrillic_trans_str</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;cyr_dict_1&#39;</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="cyrillic_trans_str-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#cyrillic_trans_str"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cyrillic_trans_str-99"><a href="#cyrillic_trans_str-99"><span class="linenos"> 99</span></a><span class="k">def</span> <span class="nf">cyrillic_trans_str</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="cyrillic_trans_str-100"><a href="#cyrillic_trans_str-100"><span class="linenos">100</span></a>                       <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cyrillic_trans_str-99"><a href="#cyrillic_trans_str-99"><span class="linenos"> 99</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cyrillic_trans_str</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="cyrillic_trans_str-100"><a href="#cyrillic_trans_str-100"><span class="linenos">100</span></a>                       <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">):</span>
 </span><span id="cyrillic_trans_str-101"><a href="#cyrillic_trans_str-101"><span class="linenos">101</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="cyrillic_trans_str-102"><a href="#cyrillic_trans_str-102"><span class="linenos">102</span></a><span class="sd">    Transcribes Cyrillic letters to Latin, string input (not vectorized)</span>
 </span><span id="cyrillic_trans_str-103"><a href="#cyrillic_trans_str-103"><span class="linenos">103</span></a>
 </span><span id="cyrillic_trans_str-104"><a href="#cyrillic_trans_str-104"><span class="linenos">104</span></a><span class="sd">    :param string:</span>
 </span><span id="cyrillic_trans_str-105"><a href="#cyrillic_trans_str-105"><span class="linenos">105</span></a><span class="sd">    :param cyr_dict:</span>
-</span><span id="cyrillic_trans_str-106"><a href="#cyrillic_trans_str-106"><span class="linenos">106</span></a><span class="sd">    :param inplace:</span>
-</span><span id="cyrillic_trans_str-107"><a href="#cyrillic_trans_str-107"><span class="linenos">107</span></a><span class="sd">    :return:</span>
-</span><span id="cyrillic_trans_str-108"><a href="#cyrillic_trans_str-108"><span class="linenos">108</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cyrillic_trans_str-109"><a href="#cyrillic_trans_str-109"><span class="linenos">109</span></a>
-</span><span id="cyrillic_trans_str-110"><a href="#cyrillic_trans_str-110"><span class="linenos">110</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="cyrillic_trans_str-111"><a href="#cyrillic_trans_str-111"><span class="linenos">111</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
-</span><span id="cyrillic_trans_str-112"><a href="#cyrillic_trans_str-112"><span class="linenos">112</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
-</span><span id="cyrillic_trans_str-113"><a href="#cyrillic_trans_str-113"><span class="linenos">113</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
-</span><span id="cyrillic_trans_str-114"><a href="#cyrillic_trans_str-114"><span class="linenos">114</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="cyrillic_trans_str-115"><a href="#cyrillic_trans_str-115"><span class="linenos">115</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="cyrillic_trans_str-116"><a href="#cyrillic_trans_str-116"><span class="linenos">116</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
-</span><span id="cyrillic_trans_str-117"><a href="#cyrillic_trans_str-117"><span class="linenos">117</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
-</span><span id="cyrillic_trans_str-118"><a href="#cyrillic_trans_str-118"><span class="linenos">118</span></a>
-</span><span id="cyrillic_trans_str-119"><a href="#cyrillic_trans_str-119"><span class="linenos">119</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-</span><span id="cyrillic_trans_str-120"><a href="#cyrillic_trans_str-120"><span class="linenos">120</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="cyrillic_trans_str-121"><a href="#cyrillic_trans_str-121"><span class="linenos">121</span></a>
-</span><span id="cyrillic_trans_str-122"><a href="#cyrillic_trans_str-122"><span class="linenos">122</span></a>    <span class="c1"># run transcription</span>
-</span><span id="cyrillic_trans_str-123"><a href="#cyrillic_trans_str-123"><span class="linenos">123</span></a>
-</span><span id="cyrillic_trans_str-124"><a href="#cyrillic_trans_str-124"><span class="linenos">124</span></a>    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">))</span>
-</span><span id="cyrillic_trans_str-125"><a href="#cyrillic_trans_str-125"><span class="linenos">125</span></a>
-</span><span id="cyrillic_trans_str-126"><a href="#cyrillic_trans_str-126"><span class="linenos">126</span></a>    <span class="k">return</span> <span class="n">string</span>
+</span><span id="cyrillic_trans_str-106"><a href="#cyrillic_trans_str-106"><span class="linenos">106</span></a><span class="sd">    :return:</span>
+</span><span id="cyrillic_trans_str-107"><a href="#cyrillic_trans_str-107"><span class="linenos">107</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cyrillic_trans_str-108"><a href="#cyrillic_trans_str-108"><span class="linenos">108</span></a>
+</span><span id="cyrillic_trans_str-109"><a href="#cyrillic_trans_str-109"><span class="linenos">109</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="cyrillic_trans_str-110"><a href="#cyrillic_trans_str-110"><span class="linenos">110</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
+</span><span id="cyrillic_trans_str-111"><a href="#cyrillic_trans_str-111"><span class="linenos">111</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="cyrillic_trans_str-112"><a href="#cyrillic_trans_str-112"><span class="linenos">112</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
+</span><span id="cyrillic_trans_str-113"><a href="#cyrillic_trans_str-113"><span class="linenos">113</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
+</span><span id="cyrillic_trans_str-114"><a href="#cyrillic_trans_str-114"><span class="linenos">114</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="cyrillic_trans_str-115"><a href="#cyrillic_trans_str-115"><span class="linenos">115</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
+</span><span id="cyrillic_trans_str-116"><a href="#cyrillic_trans_str-116"><span class="linenos">116</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
+</span><span id="cyrillic_trans_str-117"><a href="#cyrillic_trans_str-117"><span class="linenos">117</span></a>
+</span><span id="cyrillic_trans_str-118"><a href="#cyrillic_trans_str-118"><span class="linenos">118</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="cyrillic_trans_str-119"><a href="#cyrillic_trans_str-119"><span class="linenos">119</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="cyrillic_trans_str-120"><a href="#cyrillic_trans_str-120"><span class="linenos">120</span></a>
+</span><span id="cyrillic_trans_str-121"><a href="#cyrillic_trans_str-121"><span class="linenos">121</span></a>    <span class="c1"># run transcription</span>
+</span><span id="cyrillic_trans_str-122"><a href="#cyrillic_trans_str-122"><span class="linenos">122</span></a>
+</span><span id="cyrillic_trans_str-123"><a href="#cyrillic_trans_str-123"><span class="linenos">123</span></a>    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">))</span>
+</span><span id="cyrillic_trans_str-124"><a href="#cyrillic_trans_str-124"><span class="linenos">124</span></a>
+</span><span id="cyrillic_trans_str-125"><a href="#cyrillic_trans_str-125"><span class="linenos">125</span></a>    <span class="k">return</span> <span class="n">string</span>
 </span></pre></div>
 
 
@@ -402,7 +406,6 @@
 <ul>
 <li><strong>string</strong>: </li>
 <li><strong>cyr_dict</strong>: </li>
-<li><strong>inplace</strong>: </li>
 </ul>
 
 <h6 id="returns">Returns</h6>
@@ -415,51 +418,51 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">cyrillic_trans</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sr</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>,</span><span class="param">	<span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">ExtensionArray</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">Index</span>:</span></span>
+        <span class="name">cyrillic_trans</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">sr</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>,</span><span class="param">	<span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;cyr_dict_1&#39;</span></span><span class="return-annotation">) -> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">ExtensionArray</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">indexes</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">Index</span>:</span></span>
 
                 <label class="view-source-button" for="cyrillic_trans-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#cyrillic_trans"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cyrillic_trans-129"><a href="#cyrillic_trans-129"><span class="linenos">129</span></a><span class="k">def</span> <span class="nf">cyrillic_trans</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
-</span><span id="cyrillic_trans-130"><a href="#cyrillic_trans-130"><span class="linenos">130</span></a>                   <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span><span class="p">(</span>
-</span><span id="cyrillic_trans-131"><a href="#cyrillic_trans-131"><span class="linenos">131</span></a>        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">ExtensionArray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
-</span><span id="cyrillic_trans-132"><a href="#cyrillic_trans-132"><span class="linenos">132</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cyrillic_trans-133"><a href="#cyrillic_trans-133"><span class="linenos">133</span></a><span class="sd">    Transcribes Cyrillic letters to Latin, array input (vectorized)</span>
-</span><span id="cyrillic_trans-134"><a href="#cyrillic_trans-134"><span class="linenos">134</span></a>
-</span><span id="cyrillic_trans-135"><a href="#cyrillic_trans-135"><span class="linenos">135</span></a><span class="sd">    :param sr:</span>
-</span><span id="cyrillic_trans-136"><a href="#cyrillic_trans-136"><span class="linenos">136</span></a><span class="sd">    :param cyr_dict:</span>
-</span><span id="cyrillic_trans-137"><a href="#cyrillic_trans-137"><span class="linenos">137</span></a><span class="sd">    :return:</span>
-</span><span id="cyrillic_trans-138"><a href="#cyrillic_trans-138"><span class="linenos">138</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cyrillic_trans-139"><a href="#cyrillic_trans-139"><span class="linenos">139</span></a>
-</span><span id="cyrillic_trans-140"><a href="#cyrillic_trans-140"><span class="linenos">140</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="cyrillic_trans-141"><a href="#cyrillic_trans-141"><span class="linenos">141</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
-</span><span id="cyrillic_trans-142"><a href="#cyrillic_trans-142"><span class="linenos">142</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
-</span><span id="cyrillic_trans-143"><a href="#cyrillic_trans-143"><span class="linenos">143</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
-</span><span id="cyrillic_trans-144"><a href="#cyrillic_trans-144"><span class="linenos">144</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="cyrillic_trans-145"><a href="#cyrillic_trans-145"><span class="linenos">145</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="cyrillic_trans-146"><a href="#cyrillic_trans-146"><span class="linenos">146</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
-</span><span id="cyrillic_trans-147"><a href="#cyrillic_trans-147"><span class="linenos">147</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
-</span><span id="cyrillic_trans-148"><a href="#cyrillic_trans-148"><span class="linenos">148</span></a>
-</span><span id="cyrillic_trans-149"><a href="#cyrillic_trans-149"><span class="linenos">149</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-</span><span id="cyrillic_trans-150"><a href="#cyrillic_trans-150"><span class="linenos">150</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
-</span><span id="cyrillic_trans-151"><a href="#cyrillic_trans-151"><span class="linenos">151</span></a>
-</span><span id="cyrillic_trans-152"><a href="#cyrillic_trans-152"><span class="linenos">152</span></a>    <span class="n">if_series</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="cyrillic_trans-153"><a href="#cyrillic_trans-153"><span class="linenos">153</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
-</span><span id="cyrillic_trans-154"><a href="#cyrillic_trans-154"><span class="linenos">154</span></a>        <span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span>
-</span><span id="cyrillic_trans-155"><a href="#cyrillic_trans-155"><span class="linenos">155</span></a>        <span class="n">if_series</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="cyrillic_trans-156"><a href="#cyrillic_trans-156"><span class="linenos">156</span></a>
-</span><span id="cyrillic_trans-157"><a href="#cyrillic_trans-157"><span class="linenos">157</span></a>    <span class="c1"># run transcription</span>
-</span><span id="cyrillic_trans-158"><a href="#cyrillic_trans-158"><span class="linenos">158</span></a>
-</span><span id="cyrillic_trans-159"><a href="#cyrillic_trans-159"><span class="linenos">159</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">)</span>
-</span><span id="cyrillic_trans-160"><a href="#cyrillic_trans-160"><span class="linenos">160</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rtrn</span><span class="p">)</span>
-</span><span id="cyrillic_trans-161"><a href="#cyrillic_trans-161"><span class="linenos">161</span></a>
-</span><span id="cyrillic_trans-162"><a href="#cyrillic_trans-162"><span class="linenos">162</span></a>    <span class="c1"># return</span>
-</span><span id="cyrillic_trans-163"><a href="#cyrillic_trans-163"><span class="linenos">163</span></a>
-</span><span id="cyrillic_trans-164"><a href="#cyrillic_trans-164"><span class="linenos">164</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">if_series</span><span class="p">:</span>
-</span><span id="cyrillic_trans-165"><a href="#cyrillic_trans-165"><span class="linenos">165</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="n">rtrn</span><span class="o">.</span><span class="n">array</span>
-</span><span id="cyrillic_trans-166"><a href="#cyrillic_trans-166"><span class="linenos">166</span></a>
-</span><span id="cyrillic_trans-167"><a href="#cyrillic_trans-167"><span class="linenos">167</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cyrillic_trans-128"><a href="#cyrillic_trans-128"><span class="linenos">128</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cyrillic_trans</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</span><span id="cyrillic_trans-129"><a href="#cyrillic_trans-129"><span class="linenos">129</span></a>                   <span class="p">,</span> <span class="n">cyr_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">)</span> <span class="o">-&gt;</span><span class="p">(</span>
+</span><span id="cyrillic_trans-130"><a href="#cyrillic_trans-130"><span class="linenos">130</span></a>        <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">ExtensionArray</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
+</span><span id="cyrillic_trans-131"><a href="#cyrillic_trans-131"><span class="linenos">131</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cyrillic_trans-132"><a href="#cyrillic_trans-132"><span class="linenos">132</span></a><span class="sd">    Transcribes Cyrillic letters to Latin, array input (vectorized)</span>
+</span><span id="cyrillic_trans-133"><a href="#cyrillic_trans-133"><span class="linenos">133</span></a>
+</span><span id="cyrillic_trans-134"><a href="#cyrillic_trans-134"><span class="linenos">134</span></a><span class="sd">    :param sr:</span>
+</span><span id="cyrillic_trans-135"><a href="#cyrillic_trans-135"><span class="linenos">135</span></a><span class="sd">    :param cyr_dict:</span>
+</span><span id="cyrillic_trans-136"><a href="#cyrillic_trans-136"><span class="linenos">136</span></a><span class="sd">    :return:</span>
+</span><span id="cyrillic_trans-137"><a href="#cyrillic_trans-137"><span class="linenos">137</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cyrillic_trans-138"><a href="#cyrillic_trans-138"><span class="linenos">138</span></a>
+</span><span id="cyrillic_trans-139"><a href="#cyrillic_trans-139"><span class="linenos">139</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="cyrillic_trans-140"><a href="#cyrillic_trans-140"><span class="linenos">140</span></a>        <span class="k">if</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_1&#39;</span><span class="p">:</span>
+</span><span id="cyrillic_trans-141"><a href="#cyrillic_trans-141"><span class="linenos">141</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="cyrillic_trans-142"><a href="#cyrillic_trans-142"><span class="linenos">142</span></a>        <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="o">==</span> <span class="s1">&#39;cyr_dict_2&#39;</span><span class="p">:</span>
+</span><span id="cyrillic_trans-143"><a href="#cyrillic_trans-143"><span class="linenos">143</span></a>            <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_2</span>
+</span><span id="cyrillic_trans-144"><a href="#cyrillic_trans-144"><span class="linenos">144</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="cyrillic_trans-145"><a href="#cyrillic_trans-145"><span class="linenos">145</span></a>            <span class="n">fermatrica_utils_error</span><span class="p">(</span><span class="s1">&#39;Latin-Cyrillic transcription dictionary &quot;&#39;</span> <span class="o">+</span> <span class="n">cyr_dict</span> <span class="o">+</span> <span class="s1">&#39;&quot; not found. &#39;</span> <span class="o">+</span>
+</span><span id="cyrillic_trans-146"><a href="#cyrillic_trans-146"><span class="linenos">146</span></a>                                   <span class="s1">&#39;Check dictionary name spelling or pass the full dictionary as the param&#39;</span><span class="p">)</span>
+</span><span id="cyrillic_trans-147"><a href="#cyrillic_trans-147"><span class="linenos">147</span></a>
+</span><span id="cyrillic_trans-148"><a href="#cyrillic_trans-148"><span class="linenos">148</span></a>    <span class="k">elif</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">cyr_dict</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+</span><span id="cyrillic_trans-149"><a href="#cyrillic_trans-149"><span class="linenos">149</span></a>        <span class="n">cyr_dict</span> <span class="o">=</span> <span class="n">cyr_dict_1</span>
+</span><span id="cyrillic_trans-150"><a href="#cyrillic_trans-150"><span class="linenos">150</span></a>
+</span><span id="cyrillic_trans-151"><a href="#cyrillic_trans-151"><span class="linenos">151</span></a>    <span class="n">if_series</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="cyrillic_trans-152"><a href="#cyrillic_trans-152"><span class="linenos">152</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sr</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
+</span><span id="cyrillic_trans-153"><a href="#cyrillic_trans-153"><span class="linenos">153</span></a>        <span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span>
+</span><span id="cyrillic_trans-154"><a href="#cyrillic_trans-154"><span class="linenos">154</span></a>        <span class="n">if_series</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="cyrillic_trans-155"><a href="#cyrillic_trans-155"><span class="linenos">155</span></a>
+</span><span id="cyrillic_trans-156"><a href="#cyrillic_trans-156"><span class="linenos">156</span></a>    <span class="c1"># run transcription</span>
+</span><span id="cyrillic_trans-157"><a href="#cyrillic_trans-157"><span class="linenos">157</span></a>
+</span><span id="cyrillic_trans-158"><a href="#cyrillic_trans-158"><span class="linenos">158</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">cyr_dict</span><span class="p">)</span>
+</span><span id="cyrillic_trans-159"><a href="#cyrillic_trans-159"><span class="linenos">159</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="n">sr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">rtrn</span><span class="p">)</span>
+</span><span id="cyrillic_trans-160"><a href="#cyrillic_trans-160"><span class="linenos">160</span></a>
+</span><span id="cyrillic_trans-161"><a href="#cyrillic_trans-161"><span class="linenos">161</span></a>    <span class="c1"># return</span>
+</span><span id="cyrillic_trans-162"><a href="#cyrillic_trans-162"><span class="linenos">162</span></a>
+</span><span id="cyrillic_trans-163"><a href="#cyrillic_trans-163"><span class="linenos">163</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">if_series</span><span class="p">:</span>
+</span><span id="cyrillic_trans-164"><a href="#cyrillic_trans-164"><span class="linenos">164</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="n">rtrn</span><span class="o">.</span><span class="n">array</span>
+</span><span id="cyrillic_trans-165"><a href="#cyrillic_trans-165"><span class="linenos">165</span></a>
+</span><span id="cyrillic_trans-166"><a href="#cyrillic_trans-166"><span class="linenos">166</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
 </span></pre></div>
 
 
@@ -482,42 +485,48 @@
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">latru_detect</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">if_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span><span class="return-annotation">) -> <span class="nb">tuple</span>:</span></span>
+        <span class="name">latru_detect</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">string</span><span class="p">:</span> <span class="nb">str</span>,</span><span class="param">	<span class="n">if_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>,</span><span class="param">	<span class="n">full_return</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></span><span class="return-annotation">) -> <span class="nb">tuple</span>:</span></span>
 
                 <label class="view-source-button" for="latru_detect-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#latru_detect"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="latru_detect-170"><a href="#latru_detect-170"><span class="linenos">170</span></a><span class="k">def</span> <span class="nf">latru_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="latru_detect-171"><a href="#latru_detect-171"><span class="linenos">171</span></a>                 <span class="p">,</span> <span class="n">if_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
-</span><span id="latru_detect-172"><a href="#latru_detect-172"><span class="linenos">172</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="latru_detect-173"><a href="#latru_detect-173"><span class="linenos">173</span></a><span class="sd">    Detects if string is in Latin, Russian or mixed letters. Useful if Cyrillic-Latin transcription is not an option</span>
-</span><span id="latru_detect-174"><a href="#latru_detect-174"><span class="linenos">174</span></a>
-</span><span id="latru_detect-175"><a href="#latru_detect-175"><span class="linenos">175</span></a><span class="sd">    :param string:</span>
-</span><span id="latru_detect-176"><a href="#latru_detect-176"><span class="linenos">176</span></a><span class="sd">    :param if_verbose:</span>
-</span><span id="latru_detect-177"><a href="#latru_detect-177"><span class="linenos">177</span></a><span class="sd">    :return:</span>
-</span><span id="latru_detect-178"><a href="#latru_detect-178"><span class="linenos">178</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="latru_detect-179"><a href="#latru_detect-179"><span class="linenos">179</span></a>
-</span><span id="latru_detect-180"><a href="#latru_detect-180"><span class="linenos">180</span></a>    <span class="n">string_spl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="latru_detect-169"><a href="#latru_detect-169"><span class="linenos">169</span></a><span class="k">def</span><span class="w"> </span><span class="nf">latru_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="latru_detect-170"><a href="#latru_detect-170"><span class="linenos">170</span></a>                 <span class="p">,</span> <span class="n">if_verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="latru_detect-171"><a href="#latru_detect-171"><span class="linenos">171</span></a>                 <span class="p">,</span> <span class="n">full_return</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="latru_detect-172"><a href="#latru_detect-172"><span class="linenos">172</span></a>                 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+</span><span id="latru_detect-173"><a href="#latru_detect-173"><span class="linenos">173</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="latru_detect-174"><a href="#latru_detect-174"><span class="linenos">174</span></a><span class="sd">    Detects if string is in Latin, Russian or mixed letters. Useful if Cyrillic-Latin transcription is not an option</span>
+</span><span id="latru_detect-175"><a href="#latru_detect-175"><span class="linenos">175</span></a>
+</span><span id="latru_detect-176"><a href="#latru_detect-176"><span class="linenos">176</span></a><span class="sd">    :param string:</span>
+</span><span id="latru_detect-177"><a href="#latru_detect-177"><span class="linenos">177</span></a><span class="sd">    :param full_return:</span>
+</span><span id="latru_detect-178"><a href="#latru_detect-178"><span class="linenos">178</span></a><span class="sd">    :param if_verbose:</span>
+</span><span id="latru_detect-179"><a href="#latru_detect-179"><span class="linenos">179</span></a><span class="sd">    :return:</span>
+</span><span id="latru_detect-180"><a href="#latru_detect-180"><span class="linenos">180</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="latru_detect-181"><a href="#latru_detect-181"><span class="linenos">181</span></a>
-</span><span id="latru_detect-182"><a href="#latru_detect-182"><span class="linenos">182</span></a>    <span class="n">string_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">string_spl</span><span class="p">)</span>
+</span><span id="latru_detect-182"><a href="#latru_detect-182"><span class="linenos">182</span></a>    <span class="n">string_spl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 </span><span id="latru_detect-183"><a href="#latru_detect-183"><span class="linenos">183</span></a>
-</span><span id="latru_detect-184"><a href="#latru_detect-184"><span class="linenos">184</span></a>    <span class="n">rus_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^А-Яа-я]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</span><span id="latru_detect-185"><a href="#latru_detect-185"><span class="linenos">185</span></a>    <span class="n">lat_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^A-Za-z]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</span><span id="latru_detect-186"><a href="#latru_detect-186"><span class="linenos">186</span></a>
-</span><span id="latru_detect-187"><a href="#latru_detect-187"><span class="linenos">187</span></a>    <span class="k">if</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">):</span>
-</span><span id="latru_detect-188"><a href="#latru_detect-188"><span class="linenos">188</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;latin&#39;</span>
-</span><span id="latru_detect-189"><a href="#latru_detect-189"><span class="linenos">189</span></a>    <span class="k">elif</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">):</span>
-</span><span id="latru_detect-190"><a href="#latru_detect-190"><span class="linenos">190</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;russian&#39;</span>
-</span><span id="latru_detect-191"><a href="#latru_detect-191"><span class="linenos">191</span></a>    <span class="k">else</span><span class="p">:</span>
-</span><span id="latru_detect-192"><a href="#latru_detect-192"><span class="linenos">192</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;mixed&#39;</span>
-</span><span id="latru_detect-193"><a href="#latru_detect-193"><span class="linenos">193</span></a>
-</span><span id="latru_detect-194"><a href="#latru_detect-194"><span class="linenos">194</span></a>    <span class="k">if</span> <span class="n">if_verbose</span><span class="p">:</span>
-</span><span id="latru_detect-195"><a href="#latru_detect-195"><span class="linenos">195</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">string</span> <span class="o">+</span> <span class="s1">&#39;: language = &#39;</span> <span class="o">+</span> <span class="n">lng</span><span class="p">)</span>
-</span><span id="latru_detect-196"><a href="#latru_detect-196"><span class="linenos">196</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latin letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">))</span>
-</span><span id="latru_detect-197"><a href="#latru_detect-197"><span class="linenos">197</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;russian letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">))</span>
-</span><span id="latru_detect-198"><a href="#latru_detect-198"><span class="linenos">198</span></a>
-</span><span id="latru_detect-199"><a href="#latru_detect-199"><span class="linenos">199</span></a>    <span class="k">return</span> <span class="n">lng</span><span class="p">,</span> <span class="n">lat_letters</span><span class="p">,</span> <span class="n">rus_letters</span>
+</span><span id="latru_detect-184"><a href="#latru_detect-184"><span class="linenos">184</span></a>    <span class="n">string_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">string_spl</span><span class="p">)</span>
+</span><span id="latru_detect-185"><a href="#latru_detect-185"><span class="linenos">185</span></a>
+</span><span id="latru_detect-186"><a href="#latru_detect-186"><span class="linenos">186</span></a>    <span class="n">rus_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^A-Za-z]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</span><span id="latru_detect-187"><a href="#latru_detect-187"><span class="linenos">187</span></a>    <span class="n">lat_letters</span> <span class="o">=</span> <span class="n">list_select</span><span class="p">(</span><span class="s1">&#39;[^А-Яа-я]&#39;</span><span class="p">,</span> <span class="n">string_spl</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</span><span id="latru_detect-188"><a href="#latru_detect-188"><span class="linenos">188</span></a>
+</span><span id="latru_detect-189"><a href="#latru_detect-189"><span class="linenos">189</span></a>    <span class="k">if</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">):</span>
+</span><span id="latru_detect-190"><a href="#latru_detect-190"><span class="linenos">190</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;latin&#39;</span>
+</span><span id="latru_detect-191"><a href="#latru_detect-191"><span class="linenos">191</span></a>    <span class="k">elif</span> <span class="n">string_len</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">):</span>
+</span><span id="latru_detect-192"><a href="#latru_detect-192"><span class="linenos">192</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;russian&#39;</span>
+</span><span id="latru_detect-193"><a href="#latru_detect-193"><span class="linenos">193</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="latru_detect-194"><a href="#latru_detect-194"><span class="linenos">194</span></a>        <span class="n">lng</span> <span class="o">=</span> <span class="s1">&#39;mixed&#39;</span>
+</span><span id="latru_detect-195"><a href="#latru_detect-195"><span class="linenos">195</span></a>
+</span><span id="latru_detect-196"><a href="#latru_detect-196"><span class="linenos">196</span></a>    <span class="k">if</span> <span class="n">if_verbose</span><span class="p">:</span>
+</span><span id="latru_detect-197"><a href="#latru_detect-197"><span class="linenos">197</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">string</span> <span class="o">+</span> <span class="s1">&#39;: language = &#39;</span> <span class="o">+</span> <span class="n">lng</span><span class="p">)</span>
+</span><span id="latru_detect-198"><a href="#latru_detect-198"><span class="linenos">198</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latin letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lat_letters</span><span class="p">))</span>
+</span><span id="latru_detect-199"><a href="#latru_detect-199"><span class="linenos">199</span></a>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;russian letters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rus_letters</span><span class="p">))</span>
+</span><span id="latru_detect-200"><a href="#latru_detect-200"><span class="linenos">200</span></a>
+</span><span id="latru_detect-201"><a href="#latru_detect-201"><span class="linenos">201</span></a>    <span class="k">if</span> <span class="n">full_return</span><span class="p">:</span>
+</span><span id="latru_detect-202"><a href="#latru_detect-202"><span class="linenos">202</span></a>        <span class="k">return</span> <span class="n">lng</span><span class="p">,</span> <span class="n">lat_letters</span><span class="p">,</span> <span class="n">rus_letters</span>
+</span><span id="latru_detect-203"><a href="#latru_detect-203"><span class="linenos">203</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="latru_detect-204"><a href="#latru_detect-204"><span class="linenos">204</span></a>        <span class="k">return</span> <span class="n">lng</span>
 </span></pre></div>
 
 
@@ -527,6 +536,7 @@
 
 <ul>
 <li><strong>string</strong>: </li>
+<li><strong>full_return</strong>: </li>
 <li><strong>if_verbose</strong>: </li>
 </ul>
 
@@ -547,16 +557,16 @@
 
     </div>
     <a class="headerlink" href="#cyrillic_detect"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="cyrillic_detect-202"><a href="#cyrillic_detect-202"><span class="linenos">202</span></a><span class="nd">@profile</span>
-</span><span id="cyrillic_detect-203"><a href="#cyrillic_detect-203"><span class="linenos">203</span></a><span class="k">def</span> <span class="nf">cyrillic_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="cyrillic_detect-204"><a href="#cyrillic_detect-204"><span class="linenos">204</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="cyrillic_detect-205"><a href="#cyrillic_detect-205"><span class="linenos">205</span></a><span class="sd">    Checks if string contains Cyrillic letters</span>
-</span><span id="cyrillic_detect-206"><a href="#cyrillic_detect-206"><span class="linenos">206</span></a>
-</span><span id="cyrillic_detect-207"><a href="#cyrillic_detect-207"><span class="linenos">207</span></a><span class="sd">    :param string:</span>
-</span><span id="cyrillic_detect-208"><a href="#cyrillic_detect-208"><span class="linenos">208</span></a><span class="sd">    :return:</span>
-</span><span id="cyrillic_detect-209"><a href="#cyrillic_detect-209"><span class="linenos">209</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="cyrillic_detect-210"><a href="#cyrillic_detect-210"><span class="linenos">210</span></a>
-</span><span id="cyrillic_detect-211"><a href="#cyrillic_detect-211"><span class="linenos">211</span></a>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;[а-яА-Я]&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">))</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="cyrillic_detect-207"><a href="#cyrillic_detect-207"><span class="linenos">207</span></a><span class="nd">@profile</span>
+</span><span id="cyrillic_detect-208"><a href="#cyrillic_detect-208"><span class="linenos">208</span></a><span class="k">def</span><span class="w"> </span><span class="nf">cyrillic_detect</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="cyrillic_detect-209"><a href="#cyrillic_detect-209"><span class="linenos">209</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="cyrillic_detect-210"><a href="#cyrillic_detect-210"><span class="linenos">210</span></a><span class="sd">    Checks if string contains Cyrillic letters</span>
+</span><span id="cyrillic_detect-211"><a href="#cyrillic_detect-211"><span class="linenos">211</span></a>
+</span><span id="cyrillic_detect-212"><a href="#cyrillic_detect-212"><span class="linenos">212</span></a><span class="sd">    :param string:</span>
+</span><span id="cyrillic_detect-213"><a href="#cyrillic_detect-213"><span class="linenos">213</span></a><span class="sd">    :return:</span>
+</span><span id="cyrillic_detect-214"><a href="#cyrillic_detect-214"><span class="linenos">214</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="cyrillic_detect-215"><a href="#cyrillic_detect-215"><span class="linenos">215</span></a>
+</span><span id="cyrillic_detect-216"><a href="#cyrillic_detect-216"><span class="linenos">216</span></a>    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;[а-яА-Я]&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">))</span>
 </span></pre></div>
 
 

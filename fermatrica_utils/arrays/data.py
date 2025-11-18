@@ -39,7 +39,8 @@ def decapitalise_df(ds: pd.DataFrame) -> pd.DataFrame:
 
 
 @profile
-def extra_spaces_df(ds: pd.DataFrame):
+def extra_spaces_df(ds: pd.DataFrame
+                    , if_preserve_symbols: bool = False) -> pd.DataFrame:
     """
     Remove duplicating and trailing spacing from all object and string columns in dataset `ds`
 
@@ -48,12 +49,17 @@ def extra_spaces_df(ds: pd.DataFrame):
     """
 
     for i in ds.columns:
+        
         if is_object_dtype(ds[i]):
             ds[i] = ds[i].astype(str)
+
         if is_string_dtype(ds[i]):
-            ds.loc[:, i] = ds.loc[:, i].str.replace(r'( +)|(_+)', '.', regex=True)
-            ds.loc[:, i] = ds.loc[:, i].str.replace(r'\.+', '_', regex=True)
-            ds.loc[:, i] = ds.loc[:, i].str.strip(r' \.\_')
+            ds.loc[:, i] = ds.loc[:, i].str.replace(r' +', ' ', regex=True)
+
+            if not if_preserve_symbols:
+                ds.loc[:, i] = ds.loc[:, i].str.replace(r'[ \.]+', '_', regex=True)
+
+            ds.loc[:, i] = ds.loc[:, i].str.strip(r' \.\_ ')
 
     return ds.copy()
 

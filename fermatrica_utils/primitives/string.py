@@ -166,11 +166,14 @@ def cyrillic_trans(sr: pd.Series | pd.Index | list | np.ndarray
 
 
 def latru_detect(string: str
-                 , if_verbose: bool = True) -> tuple:
+                 , if_verbose: bool = False
+                 , full_return: bool = False
+                 ) -> tuple:
     """
     Detects if string is in Latin, Russian or mixed letters. Useful if Cyrillic-Latin transcription is not an option
 
     :param string:
+    :param full_return:
     :param if_verbose:
     :return:
     """
@@ -179,8 +182,8 @@ def latru_detect(string: str
 
     string_len = len(string_spl)
 
-    rus_letters = list_select('[^А-Яа-я]', string_spl, False)
-    lat_letters = list_select('[^A-Za-z]', string_spl, False)
+    rus_letters = list_select('[^A-Za-z]', string_spl, False)
+    lat_letters = list_select('[^А-Яа-я]', string_spl, False)
 
     if string_len == len(lat_letters):
         lng = 'latin'
@@ -194,7 +197,10 @@ def latru_detect(string: str
         print('latin letters: ' + str(lat_letters))
         print('russian letters: ' + str(rus_letters))
 
-    return lng, lat_letters, rus_letters
+    if full_return:
+        return lng, lat_letters, rus_letters
+    else:
+        return lng
 
 
 @profile

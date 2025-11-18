@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fermatrica-utils"
-version = "0.3"
+version = "0.3.1"
 description = "FERMATRICA Flexible Econometrics Regression Models and Tools: utils, shared objects and functions"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -22,7 +22,7 @@ classifiers = [
 dependencies = [
 ]
 
-urls = {"Homepage" = "https://gitlab.mitcoms.ru/Econometrics/fermatrica/fermatrica_utils"}
+urls = {"Homepage" = "https://github.com/FERMATRICA/fermatrica_utils"}
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -73,23 +73,23 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos">  3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">import</span> <span class="nn">importlib.abc</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span> <span class="nn">importlib.util</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span> <span class="nn">inspect</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span> <span class="nn">sys</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">importlib.abc</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">importlib.util</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span> <span class="nn">line_profiler_pycharm</span> <span class="kn">import</span> <span class="n">profile</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">line_profiler_pycharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
-</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="k">class</span> <span class="nc">FermatricaUError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a><span class="k">class</span><span class="w"> </span><span class="nc">FermatricaUError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="sd">    Exception class for errors specific for Fermatrica Utils</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a>    <span class="k">pass</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a>
 </span><span id="L-21"><a href="#L-21"><span class="linenos"> 21</span></a>
-</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="k">def</span> <span class="nf">fermatrica_utils_error</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos"> 22</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fermatrica_utils_error</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos"> 23</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos"> 24</span></a><span class="sd">    Raise FermatrricaUError exception</span>
 </span><span id="L-25"><a href="#L-25"><span class="linenos"> 25</span></a>
@@ -105,7 +105,7 @@
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="nd">@profile</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="k">def</span> <span class="nf">exec_execute</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="k">def</span><span class="w"> </span><span class="nf">exec_execute</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>                 <span class="p">,</span> <span class="n">x_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    Execute some string as a command (mostly as function call) with dataset `ds` as part of the environment.</span>
@@ -130,25 +130,25 @@
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">class</span> <span class="nc">_StringLoader</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SourceLoader</span><span class="p">):</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">class</span><span class="w"> </span><span class="nc">_StringLoader</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SourceLoader</span><span class="p">):</span>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">    Implements abstract / interface class of &quot;loader&quot; as loader from the source code saved as a string</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="k">def</span> <span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
 </span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="k">def</span> <span class="nf">get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>        <span class="k">return</span> <span class="s2">&quot;&lt;not a real path&gt;/&quot;</span> <span class="o">+</span> <span class="n">fullname</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="nd">@profile</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="k">def</span> <span class="nf">_import_module_from_string_worker</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="k">def</span><span class="w"> </span><span class="nf">_import_module_from_string_worker</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>                                      <span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">):</span>
 </span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">    Load specific module and return it as an object</span>
@@ -172,7 +172,7 @@
 </span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="nd">@profile</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="k">def</span> <span class="nf">import_module_from_string</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="k">def</span><span class="w"> </span><span class="nf">import_module_from_string</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>                              <span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>                              <span class="p">,</span> <span class="n">parent_frame_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;__main__&#39;</span><span class="p">):</span>
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -255,7 +255,7 @@
 
     </div>
     <a class="headerlink" href="#FermatricaUError"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FermatricaUError-16"><a href="#FermatricaUError-16"><span class="linenos">16</span></a><span class="k">class</span> <span class="nc">FermatricaUError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FermatricaUError-16"><a href="#FermatricaUError-16"><span class="linenos">16</span></a><span class="k">class</span><span class="w"> </span><span class="nc">FermatricaUError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 </span><span id="FermatricaUError-17"><a href="#FermatricaUError-17"><span class="linenos">17</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="FermatricaUError-18"><a href="#FermatricaUError-18"><span class="linenos">18</span></a><span class="sd">    Exception class for errors specific for Fermatrica Utils</span>
 </span><span id="FermatricaUError-19"><a href="#FermatricaUError-19"><span class="linenos">19</span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -279,7 +279,7 @@
 
     </div>
     <a class="headerlink" href="#fermatrica_utils_error"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="fermatrica_utils_error-23"><a href="#fermatrica_utils_error-23"><span class="linenos">23</span></a><span class="k">def</span> <span class="nf">fermatrica_utils_error</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="fermatrica_utils_error-23"><a href="#fermatrica_utils_error-23"><span class="linenos">23</span></a><span class="k">def</span><span class="w"> </span><span class="nf">fermatrica_utils_error</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
 </span><span id="fermatrica_utils_error-24"><a href="#fermatrica_utils_error-24"><span class="linenos">24</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="fermatrica_utils_error-25"><a href="#fermatrica_utils_error-25"><span class="linenos">25</span></a><span class="sd">    Raise FermatrricaUError exception</span>
 </span><span id="fermatrica_utils_error-26"><a href="#fermatrica_utils_error-26"><span class="linenos">26</span></a>
@@ -321,7 +321,7 @@
     </div>
     <a class="headerlink" href="#exec_execute"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="exec_execute-38"><a href="#exec_execute-38"><span class="linenos">38</span></a><span class="nd">@profile</span>
-</span><span id="exec_execute-39"><a href="#exec_execute-39"><span class="linenos">39</span></a><span class="k">def</span> <span class="nf">exec_execute</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="exec_execute-39"><a href="#exec_execute-39"><span class="linenos">39</span></a><span class="k">def</span><span class="w"> </span><span class="nf">exec_execute</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="exec_execute-40"><a href="#exec_execute-40"><span class="linenos">40</span></a>                 <span class="p">,</span> <span class="n">x_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 </span><span id="exec_execute-41"><a href="#exec_execute-41"><span class="linenos">41</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="exec_execute-42"><a href="#exec_execute-42"><span class="linenos">42</span></a><span class="sd">    Execute some string as a command (mostly as function call) with dataset `ds` as part of the environment.</span>
@@ -366,7 +366,7 @@ Useful for dynamic code operations with dataset</p>
     </div>
     <a class="headerlink" href="#import_module_from_string"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="import_module_from_string-105"><a href="#import_module_from_string-105"><span class="linenos">105</span></a><span class="nd">@profile</span>
-</span><span id="import_module_from_string-106"><a href="#import_module_from_string-106"><span class="linenos">106</span></a><span class="k">def</span> <span class="nf">import_module_from_string</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="import_module_from_string-106"><a href="#import_module_from_string-106"><span class="linenos">106</span></a><span class="k">def</span><span class="w"> </span><span class="nf">import_module_from_string</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="import_module_from_string-107"><a href="#import_module_from_string-107"><span class="linenos">107</span></a>                              <span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
 </span><span id="import_module_from_string-108"><a href="#import_module_from_string-108"><span class="linenos">108</span></a>                              <span class="p">,</span> <span class="n">parent_frame_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;__main__&#39;</span><span class="p">):</span>
 </span><span id="import_module_from_string-109"><a href="#import_module_from_string-109"><span class="linenos">109</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

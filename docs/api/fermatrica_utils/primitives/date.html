@@ -67,18 +67,18 @@
 </span><span id="L-3"><a href="#L-3"><span class="linenos">  3</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos">  4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span> <span class="nn">os</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span> <span class="nn">tarfile</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span> <span class="nn">urllib3</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="n">relativedelta</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">tarfile</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>
-</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span> <span class="nn">line_profiler_pycharm</span> <span class="kn">import</span> <span class="n">profile</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">line_profiler_pycharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
 </span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="nd">@profile</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="k">def</span> <span class="nf">date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a><span class="k">def</span><span class="w"> </span><span class="nf">date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>               <span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a>               <span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos"> 20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -110,7 +110,7 @@
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="k">def</span> <span class="nf">date_to_period</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="k">def</span><span class="w"> </span><span class="nf">date_to_period</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>                   <span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;day&#39;</span>  <span class="c1"># &#39;day&#39;, &#39;week&#39;, &#39;month&#39;, &#39;quarter&#39;, &#39;year&#39;</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>                   <span class="p">):</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -138,7 +138,7 @@
 </span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>    <span class="k">return</span> <span class="n">sr</span>
 </span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="k">def</span> <span class="nf">tzdata_windows</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a><span class="k">def</span><span class="w"> </span><span class="nf">tzdata_windows</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>                   <span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2022</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>                   <span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;tzdata&quot;</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>                   <span class="p">,</span> <span class="n">if_overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -210,7 +210,7 @@
     </div>
     <a class="headerlink" href="#date_range"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="date_range-17"><a href="#date_range-17"><span class="linenos">17</span></a><span class="nd">@profile</span>
-</span><span id="date_range-18"><a href="#date_range-18"><span class="linenos">18</span></a><span class="k">def</span> <span class="nf">date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="date_range-18"><a href="#date_range-18"><span class="linenos">18</span></a><span class="k">def</span><span class="w"> </span><span class="nf">date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="date_range-19"><a href="#date_range-19"><span class="linenos">19</span></a>               <span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="date_range-20"><a href="#date_range-20"><span class="linenos">20</span></a>               <span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 </span><span id="date_range-21"><a href="#date_range-21"><span class="linenos">21</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -270,7 +270,7 @@ and <code>period</code> as step (could be day, week, month)</p>
 
     </div>
     <a class="headerlink" href="#date_to_period"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="date_to_period-50"><a href="#date_to_period-50"><span class="linenos">50</span></a><span class="k">def</span> <span class="nf">date_to_period</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="date_to_period-50"><a href="#date_to_period-50"><span class="linenos">50</span></a><span class="k">def</span><span class="w"> </span><span class="nf">date_to_period</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
 </span><span id="date_to_period-51"><a href="#date_to_period-51"><span class="linenos">51</span></a>                   <span class="p">,</span> <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;day&#39;</span>  <span class="c1"># &#39;day&#39;, &#39;week&#39;, &#39;month&#39;, &#39;quarter&#39;, &#39;year&#39;</span>
 </span><span id="date_to_period-52"><a href="#date_to_period-52"><span class="linenos">52</span></a>                   <span class="p">):</span>
 </span><span id="date_to_period-53"><a href="#date_to_period-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -325,7 +325,7 @@ and <code>period</code> as step (could be day, week, month)</p>
 
     </div>
     <a class="headerlink" href="#tzdata_windows"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="tzdata_windows-78"><a href="#tzdata_windows-78"><span class="linenos"> 78</span></a><span class="k">def</span> <span class="nf">tzdata_windows</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="tzdata_windows-78"><a href="#tzdata_windows-78"><span class="linenos"> 78</span></a><span class="k">def</span><span class="w"> </span><span class="nf">tzdata_windows</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="tzdata_windows-79"><a href="#tzdata_windows-79"><span class="linenos"> 79</span></a>                   <span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">2022</span>
 </span><span id="tzdata_windows-80"><a href="#tzdata_windows-80"><span class="linenos"> 80</span></a>                   <span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;tzdata&quot;</span>
 </span><span id="tzdata_windows-81"><a href="#tzdata_windows-81"><span class="linenos"> 81</span></a>                   <span class="p">,</span> <span class="n">if_overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>

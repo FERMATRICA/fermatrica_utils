@@ -110,15 +110,15 @@ data pipeline or something.</p>
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span> <span class="nn">copy</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span> <span class="nn">re</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>
-</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span> <span class="nn">line_profiler_pycharm</span> <span class="kn">import</span> <span class="n">profile</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos"> 13</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">line_profiler_pycharm</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos"> 14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos"> 15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="k">def</span> <span class="nf">step_generator</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos"> 16</span></a><span class="k">def</span><span class="w"> </span><span class="nf">step_generator</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos"> 17</span></a>                   <span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos"> 18</span></a>                   <span class="p">,</span> <span class="n">step</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos"> 19</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -141,7 +141,7 @@ data pipeline or something.</p>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>
 </span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="k">class</span> <span class="nc">DotDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="k">class</span><span class="w"> </span><span class="nc">DotDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">    Class extending `dict` to access items with &#39;.&#39;. Use only for one-level dictionaries (w/o nexted dicts)</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="sd">    It is especially useful in dynamic code</span>
@@ -152,7 +152,7 @@ data pipeline or something.</p>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>    <span class="fm">__delattr__</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__delitem__</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="k">def</span> <span class="nf">dict_multifill</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dict_multifill</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>                   <span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>                   <span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 </span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -170,7 +170,7 @@ data pipeline or something.</p>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>    <span class="k">return</span> <span class="n">dct</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
 </span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="k">def</span> <span class="nf">dict_to_df</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dict_to_df</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>               <span class="p">,</span> <span class="n">key_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>               <span class="p">,</span> <span class="n">value_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>               <span class="p">,</span> <span class="n">save_pth</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -204,7 +204,7 @@ data pipeline or something.</p>
 </span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>
 </span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="k">def</span> <span class="nf">groupby_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="k">def</span><span class="w"> </span><span class="nf">groupby_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>                <span class="p">,</span> <span class="n">group_vars</span><span class="p">:</span> <span class="nb">list</span>
 </span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>                <span class="p">,</span> <span class="n">other_vars</span><span class="p">:</span> <span class="nb">list</span>
 </span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>                <span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
@@ -236,7 +236,7 @@ data pipeline or something.</p>
 </span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
 </span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>
 </span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="k">def</span> <span class="nf">select_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="k">def</span><span class="w"> </span><span class="nf">select_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>               <span class="p">,</span> <span class="n">select_vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a><span class="sd">    More efficient version of pandas [[]] or .loc[, []] (at least for pandas 1.5.2).</span>
@@ -254,7 +254,7 @@ data pipeline or something.</p>
 </span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
 </span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
 </span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="nd">@profile</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="k">def</span> <span class="nf">str_replace_eff</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="k">def</span><span class="w"> </span><span class="nf">str_replace_eff</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
 </span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>                    <span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39; &#39;</span>
 </span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>                    <span class="p">,</span> <span class="n">repl</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 </span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -278,7 +278,7 @@ data pipeline or something.</p>
 </span><span id="L-173"><a href="#L-173"><span class="linenos">173</span></a>
 </span><span id="L-174"><a href="#L-174"><span class="linenos">174</span></a>
 </span><span id="L-175"><a href="#L-175"><span class="linenos">175</span></a><span class="nd">@profile</span>
-</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="k">def</span> <span class="nf">like_sr</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+</span><span id="L-176"><a href="#L-176"><span class="linenos">176</span></a><span class="k">def</span><span class="w"> </span><span class="nf">like_sr</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
 </span><span id="L-177"><a href="#L-177"><span class="linenos">177</span></a>            <span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
 </span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a><span class="sd">    Variant of standard `.contains()` with more friendly name and suitable for mixed type columns</span>
@@ -294,7 +294,7 @@ data pipeline or something.</p>
 </span><span id="L-189"><a href="#L-189"><span class="linenos">189</span></a>    <span class="k">return</span> <span class="n">sr_new</span>
 </span><span id="L-190"><a href="#L-190"><span class="linenos">190</span></a>
 </span><span id="L-191"><a href="#L-191"><span class="linenos">191</span></a>
-</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="k">def</span> <span class="nf">rm_1_item_groups</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-192"><a href="#L-192"><span class="linenos">192</span></a><span class="k">def</span><span class="w"> </span><span class="nf">rm_1_item_groups</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-193"><a href="#L-193"><span class="linenos">193</span></a>                     <span class="p">,</span> <span class="n">group_var</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>                     <span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -331,7 +331,7 @@ data pipeline or something.</p>
 </span><span id="L-226"><a href="#L-226"><span class="linenos">226</span></a>    <span class="k">return</span> <span class="n">ds</span>
 </span><span id="L-227"><a href="#L-227"><span class="linenos">227</span></a>
 </span><span id="L-228"><a href="#L-228"><span class="linenos">228</span></a>
-</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="k">def</span> <span class="nf">pandas_tree_final_child</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-229"><a href="#L-229"><span class="linenos">229</span></a><span class="k">def</span><span class="w"> </span><span class="nf">pandas_tree_final_child</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-230"><a href="#L-230"><span class="linenos">230</span></a>                            <span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-231"><a href="#L-231"><span class="linenos">231</span></a>                            <span class="p">,</span> <span class="n">var_ch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="L-232"><a href="#L-232"><span class="linenos">232</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -362,7 +362,7 @@ data pipeline or something.</p>
 </span><span id="L-257"><a href="#L-257"><span class="linenos">257</span></a>
 </span><span id="L-258"><a href="#L-258"><span class="linenos">258</span></a>
 </span><span id="L-259"><a href="#L-259"><span class="linenos">259</span></a><span class="nd">@profile</span>
-</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="k">def</span> <span class="nf">multi_index_destroyer</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="L-260"><a href="#L-260"><span class="linenos">260</span></a><span class="k">def</span><span class="w"> </span><span class="nf">multi_index_destroyer</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="L-261"><a href="#L-261"><span class="linenos">261</span></a>                          <span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="p">):</span>
 </span><span id="L-262"><a href="#L-262"><span class="linenos">262</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-263"><a href="#L-263"><span class="linenos">263</span></a><span class="sd">    Convert Pandas multi-level column names to string names, e.g.:</span>
@@ -379,7 +379,7 @@ data pipeline or something.</p>
 </span><span id="L-274"><a href="#L-274"><span class="linenos">274</span></a>    <span class="k">return</span> <span class="n">ds</span>
 </span><span id="L-275"><a href="#L-275"><span class="linenos">275</span></a>
 </span><span id="L-276"><a href="#L-276"><span class="linenos">276</span></a>
-</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="k">def</span> <span class="nf">pandas_filter_regex</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+</span><span id="L-277"><a href="#L-277"><span class="linenos">277</span></a><span class="k">def</span><span class="w"> </span><span class="nf">pandas_filter_regex</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
 </span><span id="L-278"><a href="#L-278"><span class="linenos">278</span></a>                        <span class="n">col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="L-279"><a href="#L-279"><span class="linenos">279</span></a>                        <span class="n">include_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-280"><a href="#L-280"><span class="linenos">280</span></a>                        <span class="n">exclude_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -414,7 +414,7 @@ data pipeline or something.</p>
 </span><span id="L-309"><a href="#L-309"><span class="linenos">309</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-310"><a href="#L-310"><span class="linenos">310</span></a>
 </span><span id="L-311"><a href="#L-311"><span class="linenos">311</span></a>
-</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="k">def</span> <span class="nf">list_select</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+</span><span id="L-312"><a href="#L-312"><span class="linenos">312</span></a><span class="k">def</span><span class="w"> </span><span class="nf">list_select</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
 </span><span id="L-313"><a href="#L-313"><span class="linenos">313</span></a>                <span class="p">,</span> <span class="n">lst</span><span class="p">:</span> <span class="nb">list</span>
 </span><span id="L-314"><a href="#L-314"><span class="linenos">314</span></a>                <span class="p">,</span> <span class="n">match</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a>                <span class="p">,</span> <span class="n">include</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -428,21 +428,21 @@ data pipeline or something.</p>
 </span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">    :return:</span>
 </span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-325"><a href="#L-325"><span class="linenos">325</span></a>
-</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
-</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">==</span> <span class="n">search</span><span class="p">]</span>
-</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="n">search</span><span class="p">]</span>
-</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
-</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
-</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
-</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>
-</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>        <span class="k">return</span> <span class="n">rtrn</span>
+</span><span id="L-326"><a href="#L-326"><span class="linenos">326</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span id="L-327"><a href="#L-327"><span class="linenos">327</span></a>
+</span><span id="L-328"><a href="#L-328"><span class="linenos">328</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="L-329"><a href="#L-329"><span class="linenos">329</span></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+</span><span id="L-330"><a href="#L-330"><span class="linenos">330</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
+</span><span id="L-331"><a href="#L-331"><span class="linenos">331</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">==</span> <span class="n">search</span><span class="p">]</span>
+</span><span id="L-332"><a href="#L-332"><span class="linenos">332</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="L-333"><a href="#L-333"><span class="linenos">333</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="n">search</span><span class="p">]</span>
+</span><span id="L-334"><a href="#L-334"><span class="linenos">334</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-335"><a href="#L-335"><span class="linenos">335</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
+</span><span id="L-336"><a href="#L-336"><span class="linenos">336</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
+</span><span id="L-337"><a href="#L-337"><span class="linenos">337</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="L-338"><a href="#L-338"><span class="linenos">338</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
 </span><span id="L-339"><a href="#L-339"><span class="linenos">339</span></a>
-</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span id="L-340"><a href="#L-340"><span class="linenos">340</span></a>    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
 </span><span id="L-341"><a href="#L-341"><span class="linenos">341</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="L-342"><a href="#L-342"><span class="linenos">342</span></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
 </span><span id="L-343"><a href="#L-343"><span class="linenos">343</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
@@ -461,10 +461,10 @@ data pipeline or something.</p>
 </span><span id="L-356"><a href="#L-356"><span class="linenos">356</span></a>
 </span><span id="L-357"><a href="#L-357"><span class="linenos">357</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">rtrn</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 </span><span id="L-358"><a href="#L-358"><span class="linenos">358</span></a>
-</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>        <span class="k">return</span> <span class="n">rtrn</span>
+</span><span id="L-359"><a href="#L-359"><span class="linenos">359</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
 </span><span id="L-360"><a href="#L-360"><span class="linenos">360</span></a>
 </span><span id="L-361"><a href="#L-361"><span class="linenos">361</span></a>
-</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="k">def</span> <span class="nf">list_select_pat</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="L-362"><a href="#L-362"><span class="linenos">362</span></a><span class="k">def</span><span class="w"> </span><span class="nf">list_select_pat</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="L-363"><a href="#L-363"><span class="linenos">363</span></a>                    <span class="p">,</span> <span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 </span><span id="L-364"><a href="#L-364"><span class="linenos">364</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-365"><a href="#L-365"><span class="linenos">365</span></a><span class="sd">    Short alias for search in list by regex pattern</span>
@@ -477,7 +477,7 @@ data pipeline or something.</p>
 </span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="k">return</span> <span class="n">list_select</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">lst</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">include</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>
 </span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="k">def</span> <span class="nf">list_unique</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="k">def</span><span class="w"> </span><span class="nf">list_unique</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 </span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    Analogue of list(set(lst)) preserving order of (first appearance) elements</span>
 </span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>
@@ -503,7 +503,7 @@ data pipeline or something.</p>
 
     </div>
     <a class="headerlink" href="#step_generator"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="step_generator-17"><a href="#step_generator-17"><span class="linenos">17</span></a><span class="k">def</span> <span class="nf">step_generator</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="step_generator-17"><a href="#step_generator-17"><span class="linenos">17</span></a><span class="k">def</span><span class="w"> </span><span class="nf">step_generator</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
 </span><span id="step_generator-18"><a href="#step_generator-18"><span class="linenos">18</span></a>                   <span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
 </span><span id="step_generator-19"><a href="#step_generator-19"><span class="linenos">19</span></a>                   <span class="p">,</span> <span class="n">step</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
 </span><span id="step_generator-20"><a href="#step_generator-20"><span class="linenos">20</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -548,7 +548,7 @@ data pipeline or something.</p>
 
     </div>
     <a class="headerlink" href="#DotDict"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="DotDict-40"><a href="#DotDict-40"><span class="linenos">40</span></a><span class="k">class</span> <span class="nc">DotDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="DotDict-40"><a href="#DotDict-40"><span class="linenos">40</span></a><span class="k">class</span><span class="w"> </span><span class="nc">DotDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
 </span><span id="DotDict-41"><a href="#DotDict-41"><span class="linenos">41</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="DotDict-42"><a href="#DotDict-42"><span class="linenos">42</span></a><span class="sd">    Class extending `dict` to access items with &#39;.&#39;. Use only for one-level dictionaries (w/o nexted dicts)</span>
 </span><span id="DotDict-43"><a href="#DotDict-43"><span class="linenos">43</span></a><span class="sd">    It is especially useful in dynamic code</span>
@@ -577,7 +577,7 @@ It is especially useful in dynamic code</p>
 
     </div>
     <a class="headerlink" href="#dict_multifill"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dict_multifill-51"><a href="#dict_multifill-51"><span class="linenos">51</span></a><span class="k">def</span> <span class="nf">dict_multifill</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dict_multifill-51"><a href="#dict_multifill-51"><span class="linenos">51</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dict_multifill</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
 </span><span id="dict_multifill-52"><a href="#dict_multifill-52"><span class="linenos">52</span></a>                   <span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </span><span id="dict_multifill-53"><a href="#dict_multifill-53"><span class="linenos">53</span></a>                   <span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 </span><span id="dict_multifill-54"><a href="#dict_multifill-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -622,7 +622,7 @@ It is especially useful in dynamic code</p>
 
     </div>
     <a class="headerlink" href="#dict_to_df"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="dict_to_df-69"><a href="#dict_to_df-69"><span class="linenos">69</span></a><span class="k">def</span> <span class="nf">dict_to_df</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="dict_to_df-69"><a href="#dict_to_df-69"><span class="linenos">69</span></a><span class="k">def</span><span class="w"> </span><span class="nf">dict_to_df</span><span class="p">(</span><span class="n">dct</span><span class="p">:</span> <span class="nb">dict</span>
 </span><span id="dict_to_df-70"><a href="#dict_to_df-70"><span class="linenos">70</span></a>               <span class="p">,</span> <span class="n">key_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="dict_to_df-71"><a href="#dict_to_df-71"><span class="linenos">71</span></a>               <span class="p">,</span> <span class="n">value_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </span><span id="dict_to_df-72"><a href="#dict_to_df-72"><span class="linenos">72</span></a>               <span class="p">,</span> <span class="n">save_pth</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -679,7 +679,7 @@ It is especially useful in dynamic code</p>
 
     </div>
     <a class="headerlink" href="#groupby_eff"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="groupby_eff-103"><a href="#groupby_eff-103"><span class="linenos">103</span></a><span class="k">def</span> <span class="nf">groupby_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="groupby_eff-103"><a href="#groupby_eff-103"><span class="linenos">103</span></a><span class="k">def</span><span class="w"> </span><span class="nf">groupby_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="groupby_eff-104"><a href="#groupby_eff-104"><span class="linenos">104</span></a>                <span class="p">,</span> <span class="n">group_vars</span><span class="p">:</span> <span class="nb">list</span>
 </span><span id="groupby_eff-105"><a href="#groupby_eff-105"><span class="linenos">105</span></a>                <span class="p">,</span> <span class="n">other_vars</span><span class="p">:</span> <span class="nb">list</span>
 </span><span id="groupby_eff-106"><a href="#groupby_eff-106"><span class="linenos">106</span></a>                <span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
@@ -741,7 +741,7 @@ It is especially useful in dynamic code</p>
 
     </div>
     <a class="headerlink" href="#select_eff"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="select_eff-135"><a href="#select_eff-135"><span class="linenos">135</span></a><span class="k">def</span> <span class="nf">select_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="select_eff-135"><a href="#select_eff-135"><span class="linenos">135</span></a><span class="k">def</span><span class="w"> </span><span class="nf">select_eff</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="select_eff-136"><a href="#select_eff-136"><span class="linenos">136</span></a>               <span class="p">,</span> <span class="n">select_vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
 </span><span id="select_eff-137"><a href="#select_eff-137"><span class="linenos">137</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="select_eff-138"><a href="#select_eff-138"><span class="linenos">138</span></a><span class="sd">    More efficient version of pandas [[]] or .loc[, []] (at least for pandas 1.5.2).</span>
@@ -787,7 +787,7 @@ For some pandas selects list of columns much slower than one column</p>
     </div>
     <a class="headerlink" href="#str_replace_eff"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="str_replace_eff-152"><a href="#str_replace_eff-152"><span class="linenos">152</span></a><span class="nd">@profile</span>
-</span><span id="str_replace_eff-153"><a href="#str_replace_eff-153"><span class="linenos">153</span></a><span class="k">def</span> <span class="nf">str_replace_eff</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+</span><span id="str_replace_eff-153"><a href="#str_replace_eff-153"><span class="linenos">153</span></a><span class="k">def</span><span class="w"> </span><span class="nf">str_replace_eff</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
 </span><span id="str_replace_eff-154"><a href="#str_replace_eff-154"><span class="linenos">154</span></a>                    <span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39; &#39;</span>
 </span><span id="str_replace_eff-155"><a href="#str_replace_eff-155"><span class="linenos">155</span></a>                    <span class="p">,</span> <span class="n">repl</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 </span><span id="str_replace_eff-156"><a href="#str_replace_eff-156"><span class="linenos">156</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -834,7 +834,7 @@ For some pandas selects list of columns much slower than one column</p>
     </div>
     <a class="headerlink" href="#like_sr"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="like_sr-176"><a href="#like_sr-176"><span class="linenos">176</span></a><span class="nd">@profile</span>
-</span><span id="like_sr-177"><a href="#like_sr-177"><span class="linenos">177</span></a><span class="k">def</span> <span class="nf">like_sr</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
+</span><span id="like_sr-177"><a href="#like_sr-177"><span class="linenos">177</span></a><span class="k">def</span><span class="w"> </span><span class="nf">like_sr</span><span class="p">(</span><span class="n">sr</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span>
 </span><span id="like_sr-178"><a href="#like_sr-178"><span class="linenos">178</span></a>            <span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39; &#39;</span><span class="p">):</span>
 </span><span id="like_sr-179"><a href="#like_sr-179"><span class="linenos">179</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="like_sr-180"><a href="#like_sr-180"><span class="linenos">180</span></a><span class="sd">    Variant of standard `.contains()` with more friendly name and suitable for mixed type columns</span>
@@ -876,7 +876,7 @@ For some pandas selects list of columns much slower than one column</p>
 
     </div>
     <a class="headerlink" href="#rm_1_item_groups"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="rm_1_item_groups-193"><a href="#rm_1_item_groups-193"><span class="linenos">193</span></a><span class="k">def</span> <span class="nf">rm_1_item_groups</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="rm_1_item_groups-193"><a href="#rm_1_item_groups-193"><span class="linenos">193</span></a><span class="k">def</span><span class="w"> </span><span class="nf">rm_1_item_groups</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="rm_1_item_groups-194"><a href="#rm_1_item_groups-194"><span class="linenos">194</span></a>                     <span class="p">,</span> <span class="n">group_var</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
 </span><span id="rm_1_item_groups-195"><a href="#rm_1_item_groups-195"><span class="linenos">195</span></a>                     <span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="rm_1_item_groups-196"><a href="#rm_1_item_groups-196"><span class="linenos">196</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -941,7 +941,7 @@ before passing to function requiring 2 or more item (some stats function etc.)</
 
     </div>
     <a class="headerlink" href="#pandas_tree_final_child"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="pandas_tree_final_child-230"><a href="#pandas_tree_final_child-230"><span class="linenos">230</span></a><span class="k">def</span> <span class="nf">pandas_tree_final_child</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="pandas_tree_final_child-230"><a href="#pandas_tree_final_child-230"><span class="linenos">230</span></a><span class="k">def</span><span class="w"> </span><span class="nf">pandas_tree_final_child</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="pandas_tree_final_child-231"><a href="#pandas_tree_final_child-231"><span class="linenos">231</span></a>                            <span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="pandas_tree_final_child-232"><a href="#pandas_tree_final_child-232"><span class="linenos">232</span></a>                            <span class="p">,</span> <span class="n">var_ch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="pandas_tree_final_child-233"><a href="#pandas_tree_final_child-233"><span class="linenos">233</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1010,7 +1010,7 @@ and keep only outermost parent and outermost child for every chain</p>
     </div>
     <a class="headerlink" href="#multi_index_destroyer"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="multi_index_destroyer-260"><a href="#multi_index_destroyer-260"><span class="linenos">260</span></a><span class="nd">@profile</span>
-</span><span id="multi_index_destroyer-261"><a href="#multi_index_destroyer-261"><span class="linenos">261</span></a><span class="k">def</span> <span class="nf">multi_index_destroyer</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span id="multi_index_destroyer-261"><a href="#multi_index_destroyer-261"><span class="linenos">261</span></a><span class="k">def</span><span class="w"> </span><span class="nf">multi_index_destroyer</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span id="multi_index_destroyer-262"><a href="#multi_index_destroyer-262"><span class="linenos">262</span></a>                          <span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="p">):</span>
 </span><span id="multi_index_destroyer-263"><a href="#multi_index_destroyer-263"><span class="linenos">263</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="multi_index_destroyer-264"><a href="#multi_index_destroyer-264"><span class="linenos">264</span></a><span class="sd">    Convert Pandas multi-level column names to string names, e.g.:</span>
@@ -1054,7 +1054,7 @@ and keep only outermost parent and outermost child for every chain</p>
 
     </div>
     <a class="headerlink" href="#pandas_filter_regex"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="pandas_filter_regex-278"><a href="#pandas_filter_regex-278"><span class="linenos">278</span></a><span class="k">def</span> <span class="nf">pandas_filter_regex</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="pandas_filter_regex-278"><a href="#pandas_filter_regex-278"><span class="linenos">278</span></a><span class="k">def</span><span class="w"> </span><span class="nf">pandas_filter_regex</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
 </span><span id="pandas_filter_regex-279"><a href="#pandas_filter_regex-279"><span class="linenos">279</span></a>                        <span class="n">col</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="pandas_filter_regex-280"><a href="#pandas_filter_regex-280"><span class="linenos">280</span></a>                        <span class="n">include_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="pandas_filter_regex-281"><a href="#pandas_filter_regex-281"><span class="linenos">281</span></a>                        <span class="n">exclude_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -1113,7 +1113,7 @@ and keep only outermost parent and outermost child for every chain</p>
 
     </div>
     <a class="headerlink" href="#list_select"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="list_select-313"><a href="#list_select-313"><span class="linenos">313</span></a><span class="k">def</span> <span class="nf">list_select</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="list_select-313"><a href="#list_select-313"><span class="linenos">313</span></a><span class="k">def</span><span class="w"> </span><span class="nf">list_select</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span>
 </span><span id="list_select-314"><a href="#list_select-314"><span class="linenos">314</span></a>                <span class="p">,</span> <span class="n">lst</span><span class="p">:</span> <span class="nb">list</span>
 </span><span id="list_select-315"><a href="#list_select-315"><span class="linenos">315</span></a>                <span class="p">,</span> <span class="n">match</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 </span><span id="list_select-316"><a href="#list_select-316"><span class="linenos">316</span></a>                <span class="p">,</span> <span class="n">include</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -1127,21 +1127,21 @@ and keep only outermost parent and outermost child for every chain</p>
 </span><span id="list_select-324"><a href="#list_select-324"><span class="linenos">324</span></a><span class="sd">    :return:</span>
 </span><span id="list_select-325"><a href="#list_select-325"><span class="linenos">325</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="list_select-326"><a href="#list_select-326"><span class="linenos">326</span></a>
-</span><span id="list_select-327"><a href="#list_select-327"><span class="linenos">327</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="list_select-328"><a href="#list_select-328"><span class="linenos">328</span></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-</span><span id="list_select-329"><a href="#list_select-329"><span class="linenos">329</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
-</span><span id="list_select-330"><a href="#list_select-330"><span class="linenos">330</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">==</span> <span class="n">search</span><span class="p">]</span>
-</span><span id="list_select-331"><a href="#list_select-331"><span class="linenos">331</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="list_select-332"><a href="#list_select-332"><span class="linenos">332</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="n">search</span><span class="p">]</span>
-</span><span id="list_select-333"><a href="#list_select-333"><span class="linenos">333</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="list_select-334"><a href="#list_select-334"><span class="linenos">334</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
-</span><span id="list_select-335"><a href="#list_select-335"><span class="linenos">335</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
-</span><span id="list_select-336"><a href="#list_select-336"><span class="linenos">336</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="list_select-337"><a href="#list_select-337"><span class="linenos">337</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
-</span><span id="list_select-338"><a href="#list_select-338"><span class="linenos">338</span></a>
-</span><span id="list_select-339"><a href="#list_select-339"><span class="linenos">339</span></a>        <span class="k">return</span> <span class="n">rtrn</span>
+</span><span id="list_select-327"><a href="#list_select-327"><span class="linenos">327</span></a>    <span class="n">rtrn</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span id="list_select-328"><a href="#list_select-328"><span class="linenos">328</span></a>
+</span><span id="list_select-329"><a href="#list_select-329"><span class="linenos">329</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="list_select-330"><a href="#list_select-330"><span class="linenos">330</span></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+</span><span id="list_select-331"><a href="#list_select-331"><span class="linenos">331</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
+</span><span id="list_select-332"><a href="#list_select-332"><span class="linenos">332</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">==</span> <span class="n">search</span><span class="p">]</span>
+</span><span id="list_select-333"><a href="#list_select-333"><span class="linenos">333</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="list_select-334"><a href="#list_select-334"><span class="linenos">334</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="n">search</span><span class="p">]</span>
+</span><span id="list_select-335"><a href="#list_select-335"><span class="linenos">335</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="list_select-336"><a href="#list_select-336"><span class="linenos">336</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
+</span><span id="list_select-337"><a href="#list_select-337"><span class="linenos">337</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
+</span><span id="list_select-338"><a href="#list_select-338"><span class="linenos">338</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="list_select-339"><a href="#list_select-339"><span class="linenos">339</span></a>                <span class="n">rtrn</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">e</span><span class="p">)]</span>
 </span><span id="list_select-340"><a href="#list_select-340"><span class="linenos">340</span></a>
-</span><span id="list_select-341"><a href="#list_select-341"><span class="linenos">341</span></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span id="list_select-341"><a href="#list_select-341"><span class="linenos">341</span></a>    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
 </span><span id="list_select-342"><a href="#list_select-342"><span class="linenos">342</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span id="list_select-343"><a href="#list_select-343"><span class="linenos">343</span></a>        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
 </span><span id="list_select-344"><a href="#list_select-344"><span class="linenos">344</span></a>            <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
@@ -1160,7 +1160,7 @@ and keep only outermost parent and outermost child for every chain</p>
 </span><span id="list_select-357"><a href="#list_select-357"><span class="linenos">357</span></a>
 </span><span id="list_select-358"><a href="#list_select-358"><span class="linenos">358</span></a>        <span class="n">rtrn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">rtrn</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 </span><span id="list_select-359"><a href="#list_select-359"><span class="linenos">359</span></a>
-</span><span id="list_select-360"><a href="#list_select-360"><span class="linenos">360</span></a>        <span class="k">return</span> <span class="n">rtrn</span>
+</span><span id="list_select-360"><a href="#list_select-360"><span class="linenos">360</span></a>    <span class="k">return</span> <span class="n">rtrn</span>
 </span></pre></div>
 
 
@@ -1191,7 +1191,7 @@ and keep only outermost parent and outermost child for every chain</p>
 
     </div>
     <a class="headerlink" href="#list_select_pat"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="list_select_pat-363"><a href="#list_select_pat-363"><span class="linenos">363</span></a><span class="k">def</span> <span class="nf">list_select_pat</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="list_select_pat-363"><a href="#list_select_pat-363"><span class="linenos">363</span></a><span class="k">def</span><span class="w"> </span><span class="nf">list_select_pat</span><span class="p">(</span><span class="n">search</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="list_select_pat-364"><a href="#list_select_pat-364"><span class="linenos">364</span></a>                    <span class="p">,</span> <span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 </span><span id="list_select_pat-365"><a href="#list_select_pat-365"><span class="linenos">365</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="list_select_pat-366"><a href="#list_select_pat-366"><span class="linenos">366</span></a><span class="sd">    Short alias for search in list by regex pattern</span>
@@ -1230,7 +1230,7 @@ and keep only outermost parent and outermost child for every chain</p>
 
     </div>
     <a class="headerlink" href="#list_unique"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="list_unique-376"><a href="#list_unique-376"><span class="linenos">376</span></a><span class="k">def</span> <span class="nf">list_unique</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="list_unique-376"><a href="#list_unique-376"><span class="linenos">376</span></a><span class="k">def</span><span class="w"> </span><span class="nf">list_unique</span><span class="p">(</span><span class="n">lst</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 </span><span id="list_unique-377"><a href="#list_unique-377"><span class="linenos">377</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="list_unique-378"><a href="#list_unique-378"><span class="linenos">378</span></a><span class="sd">    Analogue of list(set(lst)) preserving order of (first appearance) elements</span>
 </span><span id="list_unique-379"><a href="#list_unique-379"><span class="linenos">379</span></a>
