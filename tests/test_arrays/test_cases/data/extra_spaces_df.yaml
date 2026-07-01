@@ -1,0 +1,43 @@
+- description: extra_spaces_df collapses spaces and replaces with underscore testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        col: ["hello  world"]
+    if_preserve_symbols: False
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      col: [hello_world]
+
+- description: extra_spaces_df preserve_symbols keeps spaces collapsed but not replaced testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        col: ["  hello  world  "]
+    if_preserve_symbols: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      col: [hello world]
+
+- description: extra_spaces_df dots replaced with underscore by default testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        col: ["  foo.bar  "]
+    if_preserve_symbols: False
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      col: [foo_bar]
+
+- description: extra_spaces_df preserve_symbols keeps dots intact testing case 3
+  params:
+    ds: !pd.DataFrame
+      data:
+        col: ["  foo.bar  "]
+    if_preserve_symbols: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      col: [foo.bar]

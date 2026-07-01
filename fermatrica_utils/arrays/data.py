@@ -3,8 +3,16 @@ Utilities to work with data. More specific operations than defined in fermatrica
 """
 
 
+import gc
+import io
 import numpy as np
 import pandas as pd
+import pickle, lzma
+try:
+    import zstandard as zstd
+    _zstd_available = True
+except ImportError:
+    _zstd_available = False
 from line_profiler_pycharm import profile
 import os
 import re
@@ -130,16 +138,149 @@ def convert_pyarrow_string(ds: pd.DataFrame
     return ds
 
 
+class _PandasCompatUnpickler(pickle.Unpickler):
+    """
+    Custom unpickler to handle pandas StringDtype changes across versions (pandas version inconsistency issue).
+    Uses a custom constructor to ensure compatibility when loading pickled pandas objects that may have been
+    created with different versions of pandas. This is particularly useful for handling the StringDtype, which has undergone
+    significant changes across pandas versions.
+    """
+
+    def find_class(self, module, name):
+    
+        if module == 'pandas.core.arrays.string_' and name == 'StringDtype':
+            from pandas.core.arrays.string_ import StringDtype as Real
+            def ctor(*args, **kwargs):
+                if len(args) > 1:  
+                    args = args[:1]
+                return Real(*args, **kwargs)
+            return ctor
+        return super().find_class(module, name)
+
+
+def read_pickle_compat(path: str):
+    """
+    Read pickle file with compatibility for pandas StringDtype changes (pandas version inconsistency issue).
+    Supports `.xz`, `.lzma`, and `.zst` compressed files.
+    :param path: path to the pickle file
+    :return: deserialized (loaded) pandas object
+    """
+
+    path_lower = path.lower()
+
+    if path_lower.endswith(('.zst', '.zstd')):
+        if not _zstd_available:
+            raise ImportError("zstandard package is required to read .zst files: pip install zstandard")
+        with open(path, 'rb') as fh:
+            dctx = zstd.ZstdDecompressor()
+            buf = io.BytesIO()
+            dctx.copy_stream(fh, buf)
+        buf.seek(0)
+        try:
+            obj = _PandasCompatUnpickler(buf).load()
+        except Exception:
+            buf.seek(0)
+            obj = pickle.load(buf)
+    else:
+        is_lzma = path_lower.endswith(('.xz', '.lzma'))
+        try:
+            openf = lzma.open if is_lzma else open
+            with openf(path, 'rb') as f:
+                obj = _PandasCompatUnpickler(f).load()
+        except Exception:
+            compression = 'xz' if is_lzma else None
+            obj = pd.read_pickle(path, compression=compression)
+
+    return obj
+
+
+def pandas_force_materialize(ds: pd.DataFrame
+                       , if_hard: bool = True
+                       , if_soft: bool = False) -> pd.DataFrame:
+    """
+    Nuclear-level materialization: fully reconstruct DataFrame from values to break ALL pandas internal references.
+    This is more aggressive than .copy(deep=True) as it rebuilds the entire DataFrame structure.
+
+    :param ds: DataFrame to materialize
+    :param if_hard: if True, perform full reconstruction even if pandas consolidation is possible
+    :param if_soft: if True, perform soft materialization (pandas consolidation) if possible
+    :return: fully materialized DataFrame
+    """
+    if ds is None or ds.empty:
+        return ds
+
+    # Try pandas internal consolidation first
+    try:
+        if hasattr(ds, '_consolidate'):
+            ds._consolidate(inplace=True)
+        elif hasattr(ds, '_consolidate_inplace'):
+            ds._consolidate_inplace()
+    except:
+        pass
+
+    if if_soft:
+
+        ds = ds.copy(deep=True)
+        ds.iloc[0, 0] = ds.iloc[0, 0]
+
+        gc.collect()
+
+    if if_hard:
+
+        # Full reconstruction from values - breaks all references
+        cols = ds.columns.copy()
+        idx = ds.index.copy()
+        vals = ds.values.copy()  # Force numpy array copy
+
+        # Reconstruct completely new DataFrame
+        new_ds = pd.DataFrame(vals, columns=cols, index=idx, copy=True)
+
+        # Force evaluation by accessing data
+        _ = new_ds.iloc[0, 0] if new_ds.shape[0] > 0 and new_ds.shape[1] > 0 else None
+
+    else:
+        new_ds = ds
+
+    return new_ds
+
+
+def pandas_force_materialize_series(s: pd.Series) -> pd.Series:
+    """
+    Nuclear-level materialization for Series: fully reconstruct Series from values to break ALL pandas internal references.
+    Similar to pandas_force_materialize but for Series objects.
+
+    :param s: Series to materialize
+    :return: fully materialized Series
+    """
+    if s is None or len(s) == 0:
+        return s
+
+    # Full reconstruction from values - breaks all references
+    idx = s.index.copy()
+    vals = s.values.copy()  # Force numpy array copy
+    name = s.name
+
+    # Reconstruct completely new Series
+    new_s = pd.Series(vals, index=idx, name=name, copy=True)
+
+    # Force evaluation by accessing data
+    _ = new_s.iloc[0] if len(new_s) > 0 else None
+
+    return new_s
+
+
+
 """
 Excel helpers and utilities
 """
 
 
 def excel_sheets_look(dr: str
-                      , ptrn_incl: str | None = None
-                      , ptrn_excl: str | None = None
+                      , ptrn_incl: str | list | None = None
+                      , ptrn_excl: str | list | None = None
                       , num: bool = False
-                      , make_df: bool = False):
+                      , make_df: bool = False
+                      , if_regex: bool = False):
     """
     Extract Excel sheet names from all Excel files in directory matching include and exclude patterns
 
@@ -148,14 +289,15 @@ def excel_sheets_look(dr: str
     :param ptrn_excl: pattern to exclude files
     :param num:
     :param make_df: return output as pandas DataFrame. Otherwise, return dictionary
+    :param if_regex: if True, treat include and exclude patterns as regex patterns
     :return:
     """
 
-    fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx')]
+    fls = [fl for fl in os.listdir(dr) if fl.endswith('.xlsx') and not fl.startswith('~$')]
     if ptrn_incl is not None:
-        fls = list_select(ptrn_incl, fls, True, True)
+        fls = list_select(ptrn_incl, fls, match=not if_regex, include=True)
     if ptrn_excl is not None:
-        fls = list_select(ptrn_excl, fls, True, False)
+        fls = list_select(ptrn_excl, fls, match=not if_regex, include=False)
 
     fl_shts = {}
     for fl in fls:

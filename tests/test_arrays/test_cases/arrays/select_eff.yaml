@@ -1,0 +1,52 @@
+- description: select_eff two of three columns testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [1, 2, 3]
+        b: [4, 5, 6]
+        c: [7, 8, 9]
+    select_vars: [a, c]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      a: [1, 2, 3]
+      c: [7, 8, 9]
+
+- description: select_eff single column testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        x: [10, 20]
+        y: [30, 40]
+    select_vars: [y]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      y: [30, 40]
+
+- description: select_eff all columns returns full dataframe testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [1, 2]
+        b: [3, 4]
+    select_vars: [a, b]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      a: [1, 2]
+      b: [3, 4]
+
+- description: select_eff preserves row order testing case 3
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [10, 20, 30]
+        b: [1, 2, 3]
+        c: [7, 8, 9]
+    select_vars: [c, a]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      c: [7, 8, 9]
+      a: [10, 20, 30]

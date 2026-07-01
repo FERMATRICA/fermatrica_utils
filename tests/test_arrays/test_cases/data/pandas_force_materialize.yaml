@@ -1,0 +1,27 @@
+- description: pandas_force_materialize float dataframe values preserved after hard reconstruction testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [1.0, 2.0, 3.0]
+        b: [4.0, 5.0, 6.0]
+    if_hard: True
+    if_soft: False
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      a: [1.0, 2.0, 3.0]
+      b: [4.0, 5.0, 6.0]
+
+- description: pandas_force_materialize soft path values preserved testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        x: [10.0, 20.0]
+        y: [30.0, 40.0]
+    if_hard: False
+    if_soft: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      x: [10.0, 20.0]
+      y: [30.0, 40.0]

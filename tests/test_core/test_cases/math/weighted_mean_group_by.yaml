@@ -1,0 +1,42 @@
+- description: weighted_mean_group by string column equal weights testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        values: [1.0, 2.0, 3.0, 4.0]
+        weights: [1.0, 1.0, 1.0, 1.0]
+        group: [A, A, B, B]
+    values: values
+    weights: weights
+    by: group
+  exp_err: False
+  expected_result: !pd.Series
+    data: {A: 1.5, B: 3.5}
+
+- description: weighted_mean_group by as list equal weights testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        values: [1.0, 2.0, 3.0, 4.0]
+        weights: [1.0, 1.0, 1.0, 1.0]
+        group: [A, A, B, B]
+    values: values
+    weights: weights
+    by:
+      - group
+  exp_err: False
+  expected_result: !pd.Series
+    data: {A: 1.5, B: 3.5}
+
+- description: weighted_mean_group by group unequal weights testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        values: [0.0, 10.0]
+        weights: [1.0, 9.0]
+        group: [A, A]
+    values: values
+    weights: weights
+    by: group
+  exp_err: False
+  expected_result: !pd.Series
+    data: {A: 9.0}

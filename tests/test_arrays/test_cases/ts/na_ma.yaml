@@ -1,0 +1,44 @@
+- description: na_ma fills interior NaN with moving average testing case 0
+  params:
+    sr: !pd.Series
+      data: [1.0, null, null, 4.0, 5.0]
+    window: 4
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 1.0, 1.0, 4.0, 5.0]
+
+- description: na_ma series without NaN is unchanged testing case 1
+  params:
+    sr: !pd.Series
+      data: [2.0, 4.0, 6.0]
+    window: 2
+  exp_err: False
+  expected_result: !pd.Series
+    data: [2.0, 4.0, 6.0]
+
+- description: na_ma leading NaN filled from right using reverse pass testing case 2
+  params:
+    sr: !pd.Series
+      data: [null, null, 4.0, 4.0]
+    window: 2
+  exp_err: False
+  expected_result: !pd.Series
+    data: [4.0, 4.0, 4.0, 4.0]
+
+- description: na_ma trailing NaN filled via ffill testing case 3
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, null, null]
+    window: 2
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 2.0, 2.0, 2.0]
+
+- description: na_ma window=0 returns unchanged series testing case 4
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0]
+    window: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 2.0, 3.0]

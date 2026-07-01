@@ -1,0 +1,62 @@
+- description: cyrillic_trans pd.Series cyr_dict_1 testing case 0
+  params:
+    sr: !pd.Series
+      data: ["\u043f\u0440\u0438\u0432\u0435\u0442", "\u043c\u0438\u0440"]
+    cyr_dict: cyr_dict_1
+  exp_err: False
+  expected_result: !pd.Series
+    data: [privet, mir]
+
+- description: cyrillic_trans cyr_dict_2 different transliteration testing case 1
+  params:
+    sr: !pd.Series
+      data: ["\u0435", "\u0451"]
+    cyr_dict: cyr_dict_2
+  exp_err: False
+  expected_result: !pd.Series
+    data: [e, yo]
+
+- description: cyrillic_trans None cyr_dict falls back to cyr_dict_1 testing case 2
+  params:
+    sr: !pd.Series
+      data: ["\u043f\u0440\u0438\u0432\u0435\u0442"]
+    cyr_dict: null
+  exp_err: False
+  expected_result: !pd.Series
+    data: [privet]
+
+- description: cyrillic_trans unknown dict name raises FermatricaUError testing case 3
+  params:
+    sr: !pd.Series
+      data: ["\u043f\u0440\u0438\u0432\u0435\u0442"]
+    cyr_dict: no_such_dict
+  exp_err: 'FermatricaUError'
+  expected_result: null
+
+- description: cyrillic_trans False cyr_dict falls back to cyr_dict_1 testing case 4
+  params:
+    sr: !pd.Series
+      data: ["\u043f\u0440\u0438\u0432\u0435\u0442"]
+    cyr_dict: False
+  exp_err: False
+  expected_result: !pd.Series
+    data: [privet]
+
+- description: cyrillic_trans custom dict used testing case 5
+  params:
+    sr: !pd.Series
+      data: ["\u0430"]
+    cyr_dict:
+      "\u0430": aa
+  exp_err: False
+  expected_result: !pd.Series
+    data: [aa]
+
+- description: cyrillic_trans latin input unchanged testing case 6
+  params:
+    sr: !pd.Series
+      data: [hello]
+    cyr_dict: cyr_dict_1
+  exp_err: False
+  expected_result: !pd.Series
+    data: [hello]

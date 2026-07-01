@@ -1,0 +1,36 @@
+- description: mean_trim excludes sharp drop and returns stable mean testing case 0
+  params:
+    x: !np.array
+      object: [100.0, 100.0, 100.0, 1.0, 1.0]
+    threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: 100.0
+
+- description: mean_trim all equal values returns that value testing case 1
+  params:
+    x: !np.array
+      object: [5.0, 5.0, 5.0, 5.0, 5.0]
+    threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: 5.0
+
+- description: mean_trim if_remove_na False nan treated as zero testing case 2
+  params:
+    x: !np.array
+      object: [.nan, 5.0, 5.0, 5.0]
+    threshold_rel: -0.1
+    window: 3
+    if_remove_na: False
+  exp_err: False
+  expected_result: 3.75
+
+- description: mean_trim series shorter than window no smoothing testing case 3
+  params:
+    x: !np.array
+      object: [5.0, 5.0, 5.0]
+    threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: 5.0

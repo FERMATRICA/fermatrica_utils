@@ -1,0 +1,144 @@
+- description: trim_numeric_mask marks low boundary values as False testing case 0
+  params:
+    x: !np.array
+      object: [1.0, 100.0, 100.0, 100.0, 1.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [False, True, True, True, False]
+
+- description: trim_numeric_mask uniform series returns all True testing case 1
+  params:
+    x: !np.array
+      object: [10.0, 10.0, 10.0, 10.0, 10.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, True, True, True]
+
+- description: trim_numeric_mask only low at start marks first element False testing case 2
+  params:
+    x: !np.array
+      object: [1.0, 100.0, 100.0, 100.0, 100.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [False, True, True, True, True]
+
+- description: trim_numeric_mask only low at end marks last element False testing case 3
+  params:
+    x: !np.array
+      object: [100.0, 100.0, 100.0, 100.0, 1.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, True, True, False]
+
+- description: trim_numeric_mask short series returns input unchanged testing case 4
+  params:
+    x: !np.array
+      object: [1.0, 2.0, 3.0]
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, True]
+
+- description: trim_numeric_mask pd.Series input converted to numpy testing case 5
+  params:
+    x: !pd.Series
+      data: [1.0, 100.0, 100.0, 100.0, 1.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [False, True, True, True, False]
+
+- description: trim_numeric_mask middle low values not trimmed testing case 6
+  params:
+    x: !np.array
+      object: [100.0, 100.0, 1.0, 100.0, 100.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, True, True, True]
+
+- description: trim_numeric_mask trim_middle marks middle low value as False testing case 7
+  params:
+    x: !np.array
+      object: [100.0, 100.0, 1.0, 100.0, 100.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+    trim_middle: True
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, False, True, True]
+
+- description: trim_numeric_mask trim_middle with low at edges and middle testing case 8
+  params:
+    x: !np.array
+      object: [1.0, 100.0, 1.0, 100.0, 1.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+    trim_middle: True
+  exp_err: False
+  expected_result: !np.array
+    object: [False, True, False, True, False]
+
+- description: trim_numeric_mask 20-element series trims 3 low at each edge testing case 9
+  params:
+    x: !np.array
+      object: [1.0, 1.0, 1.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 1.0, 1.0, 1.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, False]
+
+- description: trim_numeric_mask 20-element series middle low values not trimmed by default testing case 10
+  params:
+    x: !np.array
+      object: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 1.0, 1.0, 1.0, 1.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+
+- description: trim_numeric_mask 20-element series trim_middle marks middle low values as False testing case 11
+  params:
+    x: !np.array
+      object: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 1.0, 1.0, 1.0, 1.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+    trim_middle: True
+  exp_err: False
+  expected_result: !np.array
+    object: [True, True, True, True, True, True, True, True, False, False, False, False, True, True, True, True, True, True, True, True]
+
+- description: trim_numeric_mask 50-element series edge and middle trimming testing case 12
+  params:
+    x: !np.array
+      object: [1.0, 1.0, 1.0, 1.0, 1.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 1.0, 1.0, 1.0, 1.0, 1.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    trim_threshold_rel: 0.1
+    mean_threshold_rel: -0.1
+    window: 3
+    trim_middle: True
+  exp_err: False
+  expected_result: !np.array
+    object: [False, False, False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, False, False, False, False, False]

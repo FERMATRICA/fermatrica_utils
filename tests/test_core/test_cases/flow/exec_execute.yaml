@@ -1,0 +1,27 @@
+- description: exec_execute evaluates len of dataframe testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [1, 2, 3]
+    x_str: "len(ds)"
+  exp_err: False
+  expected_result: 3
+
+- description: exec_execute evaluates column sum testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        val: [10.0, 20.0, 30.0]
+    x_str: "ds['val'].sum()"
+  exp_err: False
+  expected_result: 60.0
+
+- description: exec_execute evaluates column count testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [1, 2]
+        b: [3, 4]
+    x_str: "len(ds.columns)"
+  exp_err: False
+  expected_result: 2

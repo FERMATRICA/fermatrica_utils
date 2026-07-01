@@ -1,0 +1,55 @@
+- description: like_str pattern matches string testing case 0
+  params:
+    pattern: lo
+    string: hello
+  exp_err: False
+  expected_result: True
+
+- description: like_str anchored pattern matches start testing case 1
+  params:
+    pattern: '^foo'
+    string: foobar
+  exp_err: False
+  expected_result: True
+
+- description: like_str anchored pattern does not match testing case 2
+  params:
+    pattern: '^foo'
+    string: barfoo
+  exp_err: False
+  expected_result: False
+
+- description: like_str no match returns False testing case 3
+  params:
+    pattern: xyz
+    string: hello
+  exp_err: False
+  expected_result: False
+
+- description: like_str empty string never matches non-empty pattern testing case 4
+  params:
+    pattern: 'a'
+    string: ''
+  exp_err: False
+  expected_result: False
+
+- description: like_str empty pattern matches any string testing case 5
+  params:
+    pattern: ''
+    string: hello
+  exp_err: False
+  expected_result: True
+
+- description: like_str case-sensitive by default uppercase does not match lowercase testing case 6
+  params:
+    pattern: 'HELLO'
+    string: hello
+  exp_err: False
+  expected_result: False
+
+- description: like_str dot matches any character testing case 7
+  params:
+    pattern: 'h.llo'
+    string: hello
+  exp_err: False
+  expected_result: True

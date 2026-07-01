@@ -13,9 +13,8 @@ from typing import List
 from packaging import version
 import statsmodels.tsa
 
-from line_profiler_pycharm import profile
-
 import fermatrica_utils
+from fermatrica_utils.flow import fermatrica_warner
 
 
 """
@@ -442,14 +441,23 @@ def mean_trim(x: pd.Series | np.ndarray
               , window: int = 3
               , if_remove_na: bool = True) -> pd.Series | np.ndarray:
     """
-    Get mean excluding significant decreases
-    IMPORTANT: won't work well for series with negative values
+    Compute a robust mean of a series by excluding periods of significant decline.
+    The series is first smoothed with a right-aligned moving average, then walked
+    sequentially: a value is included in the mean only if its relative change from
+    the last accepted value is greater than `threshold_rel`. This focuses the mean
+    on the stable "active" part of the series, ignoring ramp-up and ramp-down phases.
+    
+    IMPORTANT: not designed for series with negative values.
 
-    :param x:
-    :param threshold_rel:
-    :param window:
-    :param if_remove_na:
-    :return:
+    :param x: input 1-D series
+    :param threshold_rel: minimum acceptable relative change from the previous accepted
+        value. A value of -0.1 means drops larger than 10 % cause the current element
+        to be excluded from the mean. More negative values are more permissive.
+    :param window: window size for the right-aligned moving average smoothing step
+        applied before the filtering walk
+    :param if_remove_na: if True (default), NA elements are dropped before processing;
+        if False, NAs are replaced with 0.0
+    :return: scalar mean of the accepted (non-declining) values
     """
 
     # cleanse data
@@ -490,17 +498,36 @@ def trim_numeric_mask(x: pd.Series | np.ndarray
                       , trim_threshold_rel: float | int = .1
                       , mean_threshold_rel: float | int = -.1
                       , window: int = 3
-                      , if_remove_na: bool = True) -> pd.Series | np.ndarray:
+                      , if_remove_na: bool = True
+                      , trim_middle: bool = False) -> pd.Series | np.ndarray:
     """
-    Remove periods from start and end of the Series with values much less than average per series.
-    Use to exclude early phases of brand sales etc.
+    Build a boolean mask that marks structurally low values as False. The absolute
+    threshold is derived as `mean_trim(x) * trim_threshold_rel`, where `mean_trim`
+    returns a robust mean focused on the stable part of the series (see `mean_trim`).
 
-    :param x:
-    :param trim_threshold_rel:
-    :param mean_threshold_rel:
-    :param window:
-    :param if_remove_na:
-    :return:
+    By default only edge periods are trimmed: starting from index 0 the mask is set
+    to False for every consecutive low value until the first value that exceeds the
+    threshold; the same walk is repeated from the end of the series inward. This
+    makes the function suitable for excluding early launch ramp-ups or end-of-life
+    tail-offs (e.g. brand sales before full distribution is reached).
+
+    When `trim_middle=True`, any remaining value below the threshold in the interior
+    of the series is also marked False, covering gaps or dips anywhere in the series.
+
+    :param x: input 1-D series
+    :param trim_threshold_rel: fraction of the trimmed mean used as the low-value
+        threshold. E.g. 0.1 means values below 10 % of the trimmed mean are
+        considered low.
+    :param mean_threshold_rel: passed to `mean_trim` as `threshold_rel`; controls
+        the sensitivity of the reference mean to drops in the series
+    :param window: smoothing window forwarded to `mean_trim`
+    :param if_remove_na: forwarded to `mean_trim`; governs NA handling before the
+        reference mean is computed
+    :param trim_middle: if True, low values in positions 1 … len-2 (the interior)
+        are also marked False after the edge passes; default False preserves the
+        original behaviour
+    :return: numpy bool array of the same length as `x`; True where the value is
+        at or above the threshold (or in the interior when `trim_middle` is False)
     """
 
     # cleanse data
@@ -509,7 +536,8 @@ def trim_numeric_mask(x: pd.Series | np.ndarray
         x = x.to_numpy().astype(float)
 
     if len(x) <= window:
-        return x
+        fermatrica_warner.warning(f"There is `bs_key` with data series {x} of len = {len(x)}, which is shorter than the smoothing window {window}. Not to be trimmed")
+        return np.full(len(x), True)
 
     x = copy.deepcopy(x)
     x[sr_na(x)] = 0.0
@@ -542,5 +570,12 @@ def trim_numeric_mask(x: pd.Series | np.ndarray
     for i in range(len(rtrn)-2, 1, -1):
         if x[i] < x_threshold and rtrn[i+1] == False:  # use `==` cause it's numpy.bool_, not Python bool
             rtrn[i] = False
+
+    # mark remaining low values in the middle of the series
+
+    if trim_middle:
+        for i in range(1, len(rtrn) - 1):
+            if x[i] < x_threshold:
+                rtrn[i] = False
 
     return rtrn

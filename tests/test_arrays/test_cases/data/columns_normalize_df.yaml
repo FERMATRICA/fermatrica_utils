@@ -1,0 +1,29 @@
+- description: columns_normalize_df multi-space column name to single underscore lowercase testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        "First  Name": [1, 2]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      first_name: [1, 2]
+
+- description: columns_normalize_df dot in column name replaced with underscore testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        "Col.Name": [1, 2]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      col_name: [1, 2]
+
+- description: columns_normalize_df leading and trailing underscores stripped testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        "_some_col_": [10, 20]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      some_col: [10, 20]

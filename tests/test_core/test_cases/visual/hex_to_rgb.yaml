@@ -1,0 +1,47 @@
+- description: hex_to_rgb red color testing case 0
+  params:
+    hex_code: '#FF0000'
+  exp_err: False
+  expected_result: [255, 0, 0]
+
+- description: hex_to_rgb black color testing case 1
+  params:
+    hex_code: '#000000'
+  exp_err: False
+  expected_result: [0, 0, 0]
+
+- description: hex_to_rgb white without hash testing case 2
+  params:
+    hex_code: 'FFFFFF'
+  exp_err: False
+  expected_result: [255, 255, 255]
+
+- description: hex_to_rgb arbitrary color testing case 3
+  params:
+    hex_code: '#1A2B3C'
+  exp_err: False
+  expected_result: [26, 43, 60]
+
+- description: hex_to_rgb lowercase hex digits testing case 4
+  params:
+    hex_code: '#ff0000'
+  exp_err: False
+  expected_result: [255, 0, 0]
+
+- description: hex_to_rgb mixed-case hex digits testing case 5
+  params:
+    hex_code: '#Ff8800'
+  exp_err: False
+  expected_result: [255, 136, 0]
+
+- description: hex_to_rgb short 3-digit hex raises ValueError testing case 6
+  params:
+    hex_code: '#FFF'
+  exp_err: ValueError
+  expected_result: []
+
+- description: hex_to_rgb invalid chars raises ValueError testing case 7
+  params:
+    hex_code: '#GGGGGG'
+  exp_err: ValueError
+  expected_result: []

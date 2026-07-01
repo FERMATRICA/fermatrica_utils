@@ -1,0 +1,81 @@
+- description: rm_1_item_groups removes singleton groups testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        brand: [A, A, B, C]
+        value: [1, 2, 3, 4]
+    group_var: brand
+    inplace: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      brand: [A, A]
+      value: [1, 2]
+
+- description: rm_1_item_groups no singletons returns full dataframe testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        brand: [A, A, B, B]
+        value: [1, 2, 3, 4]
+    group_var: brand
+    inplace: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      brand: [A, A, B, B]
+      value: [1, 2, 3, 4]
+
+- description: rm_1_item_groups all singletons returns empty dataframe testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        brand: [A, B, C]
+        value: [1, 2, 3]
+    group_var: brand
+    inplace: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      brand: !pd.Series
+        data: []
+        dtype: object
+      value: !pd.Series
+        data: []
+        dtype: int64
+
+- description: rm_1_item_groups list group_var removes singleton combo testing case 3
+  params:
+    ds: !pd.DataFrame
+      data:
+        brand: [A, A, B, B, C]
+        region: [N, N, S, S, E]
+        value: [1, 2, 3, 4, 5]
+    group_var:
+      - brand
+      - region
+    inplace: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      brand: [A, A, B, B]
+      region: [N, N, S, S]
+      value: [1, 2, 3, 4]
+
+- description: rm_1_item_groups list group_var all pairs survive testing case 4
+  params:
+    ds: !pd.DataFrame
+      data:
+        brand: [A, A, B, B]
+        region: [N, N, S, S]
+        value: [1, 2, 3, 4]
+    group_var:
+      - brand
+      - region
+    inplace: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      brand: [A, A, B, B]
+      region: [N, N, S, S]
+      value: [1, 2, 3, 4]

@@ -1,0 +1,71 @@
+- description: int_to_roman converts 1 testing case 0
+  params:
+    number: 1
+  exp_err: False
+  expected_result: I
+
+- description: int_to_roman converts 4 testing case 1
+  params:
+    number: 4
+  exp_err: False
+  expected_result: IV
+
+- description: int_to_roman converts 9 testing case 2
+  params:
+    number: 9
+  exp_err: False
+  expected_result: IX
+
+- description: int_to_roman converts 40 testing case 3
+  params:
+    number: 40
+  exp_err: False
+  expected_result: XL
+
+- description: int_to_roman converts 1994 testing case 4
+  params:
+    number: 1994
+  exp_err: False
+  expected_result: MCMXCIV
+
+- description: int_to_roman rounds float to int testing case 5
+  params:
+    number: 3.6
+  exp_err: False
+  expected_result: IV
+
+- description: int_to_roman float 0.5 banker-rounds to 0 returns empty string testing case 6
+  params:
+    number: 0.5
+  exp_err: False
+  expected_result: ''
+
+- description: int_to_roman float 3999.4 rounds to 3999 testing case 7
+  params:
+    number: 3999.4
+  exp_err: False
+  expected_result: MMMCMXCIX
+
+- description: int_to_roman 3999 largest standard roman numeral testing case 8
+  params:
+    number: 3999
+  exp_err: False
+  expected_result: MMMCMXCIX
+
+- description: int_to_roman 2024 current year testing case 9
+  params:
+    number: 2024
+  exp_err: False
+  expected_result: MMXXIV
+
+- description: int_to_roman zero returns empty string testing case 10
+  params:
+    number: 0
+  exp_err: False
+  expected_result: ''
+
+- description: int_to_roman 4000 above standard limit uses multiple M testing case 11
+  params:
+    number: 4000
+  exp_err: False
+  expected_result: MMMM

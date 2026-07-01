@@ -1,0 +1,39 @@
+- description: like_sr match found testing case 0
+  params:
+    sr: !pd.Series
+      data: [hello world, foo, bar]
+    pattern: 'oo'
+  exp_err: False
+  expected_result: [False, True, False]
+
+- description: like_sr no match testing case 1
+  params:
+    sr: !pd.Series
+      data: [alpha, beta, gamma]
+    pattern: 'xyz'
+  exp_err: False
+  expected_result: [False, False, False]
+
+- description: like_sr all match testing case 2
+  params:
+    sr: !pd.Series
+      data: [abc, abcd, xabc]
+    pattern: 'abc'
+  exp_err: False
+  expected_result: [True, True, True]
+
+- description: like_sr empty series returns empty list testing case 3
+  params:
+    sr: !pd.Series
+      data: []
+    pattern: 'abc'
+  exp_err: False
+  expected_result: []
+
+- description: like_sr non-string element becomes nan testing case 4
+  params:
+    sr: !pd.Series
+      data: [hello, 1.0, world]
+    pattern: 'hello'
+  exp_err: False
+  expected_result: [True, .nan, False]

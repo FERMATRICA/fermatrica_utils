@@ -1,0 +1,128 @@
+- description: date_range weekly range testing case 0
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-15'
+    period: 'week'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-08'
+    - !pd.Timestamp '2024-01-15'
+
+- description: date_range monthly range testing case 1
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-03-01'
+    period: 'month'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-02-01'
+    - !pd.Timestamp '2024-03-01'
+
+- description: date_range daily range testing case 2
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-05'
+    period: 'day'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-02'
+    - !pd.Timestamp '2024-01-03'
+    - !pd.Timestamp '2024-01-04'
+    - !pd.Timestamp '2024-01-05'
+
+- description: date_range start equals end returns single element testing case 3
+  params:
+    start_date: '2024-06-15'
+    end_date: '2024-06-15'
+    period: 'day'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-06-15'
+
+- description: date_range start after end returns empty list testing case 4
+  params:
+    start_date: '2024-01-10'
+    end_date: '2024-01-01'
+    period: 'day'
+  exp_err: False
+  expected_result: []
+
+- description: date_range weekly alias w testing case 5
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-15'
+    period: 'w'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-08'
+    - !pd.Timestamp '2024-01-15'
+
+- description: date_range weekly alias weeks testing case 6
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-15'
+    period: 'weeks'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-08'
+    - !pd.Timestamp '2024-01-15'
+
+- description: date_range monthly alias m testing case 7
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-03-01'
+    period: 'm'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-02-01'
+    - !pd.Timestamp '2024-03-01'
+
+- description: date_range monthly alias months testing case 8
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-03-01'
+    period: 'months'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-02-01'
+    - !pd.Timestamp '2024-03-01'
+
+- description: date_range daily alias d testing case 9
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-03'
+    period: 'd'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-02'
+    - !pd.Timestamp '2024-01-03'
+
+- description: date_range daily alias days testing case 10
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-03'
+    period: 'days'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-02'
+    - !pd.Timestamp '2024-01-03'
+
+- description: date_range period uppercased behaves same as lowercase testing case 11
+  params:
+    start_date: '2024-01-01'
+    end_date: '2024-01-15'
+    period: 'WEEK'
+  exp_err: False
+  expected_result:
+    - !pd.Timestamp '2024-01-01'
+    - !pd.Timestamp '2024-01-08'
+    - !pd.Timestamp '2024-01-15'

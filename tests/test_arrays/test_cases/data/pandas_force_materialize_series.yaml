@@ -1,0 +1,15 @@
+- description: pandas_force_materialize_series float series values preserved after reconstruction testing case 0
+  params:
+    s: !pd.Series
+      data: [1.0, 2.0, 3.0, 4.0, 5.0]
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 2.0, 3.0, 4.0, 5.0]
+
+- description: pandas_force_materialize_series integer series values preserved testing case 1
+  params:
+    s: !pd.Series
+      data: [10, 20, 30]
+  exp_err: False
+  expected_result: !pd.Series
+    data: [10, 20, 30]

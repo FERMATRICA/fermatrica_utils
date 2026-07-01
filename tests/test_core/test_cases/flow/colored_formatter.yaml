@@ -1,0 +1,20 @@
+- description: ColoredFormatter warning level wraps in yellow escape codes testing case 0
+  params:
+    levelno: 30
+    msg: "test warning"
+  exp_err: False
+  expected_result: "\x1b[33mtest warning\x1b[0m"
+
+- description: ColoredFormatter info level no yellow codes testing case 1
+  params:
+    levelno: 20
+    msg: "test info"
+  exp_err: False
+  expected_result: "test info"
+
+- description: ColoredFormatter error level no yellow codes testing case 2
+  params:
+    levelno: 40
+    msg: "test error"
+  exp_err: False
+  expected_result: "test error"

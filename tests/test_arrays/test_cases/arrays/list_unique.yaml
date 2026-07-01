@@ -1,0 +1,23 @@
+- description: list_unique removes duplicates preserving first-appearance order testing case 0
+  params:
+    lst: [1, 2, 1, 3, 2]
+  exp_err: False
+  expected_result: [1, 2, 3]
+
+- description: list_unique all unique elements returns list unchanged testing case 1
+  params:
+    lst: [a, b, c]
+  exp_err: False
+  expected_result: [a, b, c]
+
+- description: list_unique empty list returns empty list testing case 2
+  params:
+    lst: []
+  exp_err: False
+  expected_result: []
+
+- description: list_unique all same elements returns single element testing case 3
+  params:
+    lst: [z, z, z]
+  exp_err: False
+  expected_result: [z]

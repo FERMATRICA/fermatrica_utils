@@ -1,0 +1,31 @@
+- description: decapitalise_df object column all-upper to lower testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        name: [Alice, BOB, Charlie]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      name: [alice, bob, charlie]
+
+- description: decapitalise_df mixed object and numeric column only string lowered testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        label: [X, Y, Z]
+        val: [1, 2, 3]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      label: [x, y, z]
+      val: [1, 2, 3]
+
+- description: decapitalise_df already lowercase passthrough testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [foo, bar, baz]
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      a: [foo, bar, baz]

@@ -6,7 +6,9 @@ Utilities to control flow, mostly dynamic code utils, but also custom exceptions
 import importlib.abc
 import importlib.util
 import inspect
+import logging
 import sys
+import uuid
 
 import pandas as pd
 from line_profiler_pycharm import profile
@@ -32,6 +34,30 @@ def fermatrica_utils_error(msg):
     raise FermatricaUError(msg)
 
     pass
+
+
+class ColoredFormatter(logging.Formatter):
+    """Logging formatter that renders WARNING-level messages in yellow."""
+
+    _YELLOW = '\033[33m'
+    _RESET = '\033[0m'
+
+    def format(self, record: logging.LogRecord) -> str:
+        msg = super().format(record)
+        if record.levelno == logging.WARNING:
+            return self._YELLOW + msg + self._RESET
+        return msg
+
+# Use a unique logger name to avoid collisions when users also call
+# logging.getLogger('fermatrica') — that returns the same singleton,
+# causing duplicate handler attachment and duplicate log output.
+
+_fermatrica_logger_name = f'fermatrica.{uuid.uuid4().hex[:8]}'
+fermatrica_warner = logging.getLogger(_fermatrica_logger_name)
+_fermatrica_warner_handler = logging.StreamHandler()
+_fermatrica_warner_handler.setFormatter(ColoredFormatter())
+fermatrica_warner.addHandler(_fermatrica_warner_handler)
+fermatrica_warner.propagate = False
 
 
 @profile

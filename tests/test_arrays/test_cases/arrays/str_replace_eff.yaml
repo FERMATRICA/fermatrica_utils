@@ -1,0 +1,35 @@
+- description: str_replace_eff replace spaces with underscore testing case 0
+  params:
+    sr: !pd.Series
+      data: [hello world, foo bar, baz]
+    pattern: ' '
+    repl: '_'
+  exp_err: False
+  expected_result: [hello_world, foo_bar, baz]
+
+- description: str_replace_eff no match returns unchanged testing case 1
+  params:
+    sr: !pd.Series
+      data: [hello, world]
+    pattern: 'xyz'
+    repl: ''
+  exp_err: False
+  expected_result: [hello, world]
+
+- description: str_replace_eff empty string elements left empty testing case 2
+  params:
+    sr: !pd.Series
+      data: ['', 'abc']
+    pattern: 'a'
+    repl: 'X'
+  exp_err: False
+  expected_result: ['', Xbc]
+
+- description: str_replace_eff non-string element becomes nan testing case 3
+  params:
+    sr: !pd.Series
+      data: [hello, 1.0, world]
+    pattern: 'l'
+    repl: 'L'
+  exp_err: False
+  expected_result: [heLLo, .nan, worLd]

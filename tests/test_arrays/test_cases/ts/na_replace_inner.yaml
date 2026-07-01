@@ -1,0 +1,44 @@
+- description: na_replace_inner fills inner NaN and keeps trailing NaN testing case 0
+  params:
+    sr: !pd.Series
+      data: [1.0, null, null, 4.0, null]
+    replace_val: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 0.0, 0.0, 4.0, null]
+
+- description: na_replace_inner series without NaN is unchanged testing case 1
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0]
+    replace_val: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 2.0, 3.0]
+
+- description: na_replace_inner all NaN returns unchanged all NaN testing case 2
+  params:
+    sr: !pd.Series
+      data: [null, null, null]
+    replace_val: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [null, null, null]
+
+- description: na_replace_inner leading NaN only no inner fill testing case 3
+  params:
+    sr: !pd.Series
+      data: [null, 1.0, 2.0]
+    replace_val: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [null, 1.0, 2.0]
+
+- description: na_replace_inner trailing NaN only no inner fill testing case 4
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, null]
+    replace_val: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 2.0, null]

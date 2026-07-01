@@ -1,0 +1,29 @@
+- description: latru_detect pure latin string testing case 0
+  params:
+    string: hello
+  exp_err: False
+  expected_result: latin
+
+- description: latru_detect pure russian string testing case 1
+  params:
+    string: "\u043f\u0440\u0438\u0432\u0435\u0442"
+  exp_err: False
+  expected_result: russian
+
+- description: latru_detect mixed string testing case 2
+  params:
+    string: "hello\u043c\u0438\u0440"
+  exp_err: False
+  expected_result: mixed
+
+- description: latru_detect digits-only classified as latin testing case 3
+  params:
+    string: '12345'
+  exp_err: False
+  expected_result: latin
+
+- description: latru_detect empty string classified as latin testing case 4
+  params:
+    string: ''
+  exp_err: False
+  expected_result: latin

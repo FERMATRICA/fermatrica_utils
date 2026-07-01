@@ -1,0 +1,39 @@
+- description: sr_na detects NaN positions testing case 0
+  params:
+    sr: !pd.Series
+      data: [1.0, null, 3.0]
+  exp_err: False
+  expected_result: !pd.Series
+    data: [False, True, False]
+
+- description: sr_na all non-null returns all False testing case 1
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0]
+  exp_err: False
+  expected_result: !pd.Series
+    data: [False, False, False]
+
+- description: sr_na all NaN returns all True testing case 2
+  params:
+    sr: !pd.Series
+      data: [.nan, .nan, .nan]
+  exp_err: False
+  expected_result: !pd.Series
+    data: [True, True, True]
+
+- description: sr_na integer series no NA returns all False testing case 3
+  params:
+    sr: !pd.Series
+      data: [1, 2, 3]
+  exp_err: False
+  expected_result: !pd.Series
+    data: [False, False, False]
+
+- description: sr_na numpy array input returns boolean array testing case 4
+  params:
+    sr: !np.array
+      object: [1.0, .nan, 3.0]
+  exp_err: False
+  expected_result: !np.array
+    object: [False, True, False]

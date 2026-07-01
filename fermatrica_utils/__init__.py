@@ -6,7 +6,7 @@ Basic / common / non-specific operations and tasks used by FERMATRICA econometri
 
 
 from fermatrica_utils.decorators import spinner
-from fermatrica_utils.flow import fermatrica_utils_error, FermatricaUError, exec_execute, import_module_from_string
+from fermatrica_utils.flow import fermatrica_utils_error, FermatricaUError, exec_execute, import_module_from_string, fermatrica_warner
 from fermatrica_utils.objects import StableClass, get_size
 from fermatrica_utils.os import (listdir_abs, sanitize_string, sanitize_date_string, sanitize_datetime_string
     , sanitize_int, sanitize_bool, sanitize_numeric, secure_path)
@@ -25,4 +25,5 @@ from fermatrica_utils.arrays.ts import ma_eff, mar_eff, mal_eff, ts_decompose, n
     na_replace_inner, sr_na, mean_trim, trim_numeric_mask
 from fermatrica_utils.arrays.data import decapitalise_df, columns_normalize_df, extra_spaces_df, excel_df_look, \
     excel_get_cols, excel_get_col_vals, excel_get_row_vals, excel_header_look, excel_sheets_look, excel_header_look_addit, \
-    header_row_detect, convert_pyarrow_string, split_dataframe
+    header_row_detect, convert_pyarrow_string, split_dataframe, read_pickle_compat, pandas_force_materialize, pandas_force_materialize_series
+from fermatrica_utils.arrays.merge import period_align, ds_merge

@@ -318,7 +318,7 @@ def list_select(search: str | list
 
     :param search: search pattern, string or list of strings
     :param lst: input list
-    :param match: if True, use `search` argument as regex pattern. If False, treat `search` as equal to
+    :param match: if True, use `search` argument as equal to. If False, treat `search` as regex pattern
     :param include: if True, return matching elements. If False, return non-matching elements
     :return:
     """

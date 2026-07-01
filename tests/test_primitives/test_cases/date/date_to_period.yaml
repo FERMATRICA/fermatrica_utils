@@ -1,0 +1,125 @@
+- description: date_to_period daily period floors time component testing case 0
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-01-15 12:00:00']
+    period: 'day'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-15']
+
+- description: date_to_period weekly period returns monday testing case 1
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-01-17']
+    period: 'week'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-15']
+
+- description: date_to_period monthly period returns first of month testing case 2
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-03-20']
+    period: 'month'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-03-01']
+
+- description: date_to_period quarterly period returns first of quarter testing case 3
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-05-10']
+    period: 'quarter'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-04-01']
+
+- description: date_to_period yearly period returns first of year testing case 4
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-09-01']
+    period: 'year'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-01']
+
+- description: date_to_period daily alias d testing case 5
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-03-15 18:30:00']
+    period: 'd'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-03-15']
+
+- description: date_to_period weekly alias w testing case 6
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-01-17']
+    period: 'w'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-15']
+
+- description: date_to_period monthly alias m testing case 7
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-03-20']
+    period: 'm'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-03-01']
+
+- description: date_to_period quarterly alias q testing case 8
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-05-10']
+    period: 'q'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-04-01']
+
+- description: date_to_period yearly alias y testing case 9
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-09-01']
+    period: 'y'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-01']
+
+- description: date_to_period weekly monday stays monday testing case 10
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-01-15']
+    period: 'week'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-15']
+
+- description: date_to_period weekly sunday maps to previous monday testing case 11
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-01-21']
+    period: 'week'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-15']
+
+- description: date_to_period daily floor removes time component testing case 12
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-06-15 23:59:59']
+    period: 'day'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-06-15']
+
+- description: date_to_period multi-element series monthly testing case 13
+  params:
+    sr: !pd.DatetimeSeries
+      data: ['2024-01-05', '2024-02-20', '2024-03-31']
+    period: 'month'
+  exp_err: False
+  expected_result: !pd.DatetimeSeries
+    data: ['2024-01-01', '2024-02-01', '2024-03-01']

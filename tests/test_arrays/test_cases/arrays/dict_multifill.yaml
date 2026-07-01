@@ -1,0 +1,31 @@
+- description: dict_multifill two keys testing case 0
+  params:
+    dct: {a: 0, b: 0}
+    keys: [a, b]
+    values: [1, 2]
+  exp_err: False
+  expected_result: {a: 1, b: 2}
+
+- description: dict_multifill empty keys testing case 1
+  params:
+    dct: {a: 10, b: 20}
+    keys: []
+    values: []
+  exp_err: False
+  expected_result: {a: 10, b: 20}
+
+- description: dict_multifill overwrites existing key testing case 2
+  params:
+    dct: {a: 0, b: 0}
+    keys: [a]
+    values: [42]
+  exp_err: False
+  expected_result: {a: 42, b: 0}
+
+- description: dict_multifill adds new key not in original dict testing case 3
+  params:
+    dct: {a: 1}
+    keys: [b]
+    values: [2]
+  exp_err: False
+  expected_result: {a: 1, b: 2}

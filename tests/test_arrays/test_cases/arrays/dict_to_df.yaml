@@ -1,0 +1,28 @@
+- description: dict_to_df basic two-item dict produces key-value dataframe testing case 0
+  params:
+    dct: {a: 1, b: 2}
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      key: [a, b]
+      value: [1, 2]
+
+- description: dict_to_df custom key_name and value_name testing case 1
+  params:
+    dct: {x: 10, y: 20}
+    key_name: name
+    value_name: amount
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      name: [x, y]
+      amount: [10, 20]
+
+- description: dict_to_df single-item dict testing case 2
+  params:
+    dct: {only: 99}
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      key: [only]
+      value: [99]

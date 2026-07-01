@@ -1,0 +1,39 @@
+- description: split_dataframe two groups returns list of two dataframes testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        splt: [0, 0, 1, 1]
+        value: [1, 2, 3, 4]
+    group_col: splt
+  exp_err: False
+  expected_result: !list_of_df
+    - !pd.DataFrame
+      data:
+        splt: [0, 0]
+        value: [1, 2]
+    - !pd.DataFrame
+      data:
+        splt: [1, 1]
+        value: [3, 4]
+
+- description: split_dataframe three groups returns list of three dataframes testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        splt: [a, a, b, b, c, c]
+        val: [1, 2, 3, 4, 5, 6]
+    group_col: splt
+  exp_err: False
+  expected_result: !list_of_df
+    - !pd.DataFrame
+      data:
+        splt: [a, a]
+        val: [1, 2]
+    - !pd.DataFrame
+      data:
+        splt: [b, b]
+        val: [3, 4]
+    - !pd.DataFrame
+      data:
+        splt: [c, c]
+        val: [5, 6]

@@ -1,0 +1,47 @@
+- description: step_generator int range testing case 0
+  params:
+    start: 1
+    stop: 5
+    step: 1
+  exp_err: False
+  expected_result: [1, 2, 3, 4, 5]
+
+- description: step_generator float step testing case 1
+  params:
+    start: 0.0
+    stop: 1.0
+    step: 0.5
+  exp_err: False
+  expected_result: [0.0, 0.5, 1.0]
+
+- description: step_generator start equals stop testing case 2
+  params:
+    start: 3
+    stop: 3
+    step: 1
+  exp_err: False
+  expected_result: [3]
+
+- description: step_generator start greater than stop yields nothing testing case 3
+  params:
+    start: 5
+    stop: 3
+    step: 1
+  exp_err: False
+  expected_result: []
+
+- description: step_generator negative step is not handled yields nothing testing case 4
+  params:
+    start: 5
+    stop: 3
+    step: -1
+  exp_err: False
+  expected_result: []
+
+- description: step_generator large step skips to one element testing case 5
+  params:
+    start: 1
+    stop: 10
+    step: 100
+  exp_err: False
+  expected_result: [1]

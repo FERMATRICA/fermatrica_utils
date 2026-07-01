@@ -1,0 +1,104 @@
+- description: list_select regex include testing case 0
+  params:
+    search: 'an'
+    lst: [apple, banana, cherry]
+    match: False
+    include: True
+  exp_err: False
+  expected_result: [banana]
+
+- description: list_select exact match include testing case 1
+  params:
+    search: apple
+    lst: [apple, banana, cherry]
+    match: True
+    include: True
+  exp_err: False
+  expected_result: [apple]
+
+- description: list_select regex exclude testing case 2
+  params:
+    search: 'an'
+    lst: [apple, banana, cherry]
+    match: False
+    include: False
+  exp_err: False
+  expected_result: [apple, cherry]
+
+- description: list_select exact match exclude testing case 3
+  params:
+    search: apple
+    lst: [apple, banana, cherry]
+    match: True
+    include: False
+  exp_err: False
+  expected_result: [banana, cherry]
+
+- description: list_select regex include no match returns empty testing case 4
+  params:
+    search: 'xyz'
+    lst: [apple, banana, cherry]
+    match: False
+    include: True
+  exp_err: False
+  expected_result: []
+
+- description: list_select exact match include no match returns empty testing case 5
+  params:
+    search: mango
+    lst: [apple, banana, cherry]
+    match: True
+    include: True
+  exp_err: False
+  expected_result: []
+
+- description: list_select list regex include testing case 6
+  params:
+    search:
+      - an
+      - ch
+    lst: [apple, banana, cherry]
+    match: False
+    include: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      0: {an: banana, ch: cherry}
+
+- description: list_select list exact include with no match row testing case 7
+  params:
+    search:
+      - apple
+      - mango
+    lst: [apple, banana, cherry]
+    match: True
+    include: True
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      0: {apple: apple, mango: .nan}
+
+- description: list_select list regex exclude testing case 8
+  params:
+    search:
+      - an
+    lst: [apple, banana, cherry]
+    match: False
+    include: False
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      0: {an: apple}
+      1: {an: cherry}
+
+- description: list_select list exact exclude testing case 9
+  params:
+    search:
+      - apple
+    lst: [apple, banana]
+    match: True
+    include: False
+  exp_err: False
+  expected_result: !pd.DataFrame
+    data:
+      0: {apple: banana}

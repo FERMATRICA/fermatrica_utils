@@ -7,11 +7,7 @@ tmp/
 /logs
 /data
 /intro
-/reports*
-/results*
-/output
-/data.raw
-/data.processed
+/tmp
 *log.txt
 *~$*xlsx
 *.pclprof

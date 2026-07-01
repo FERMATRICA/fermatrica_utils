@@ -1,0 +1,35 @@
+- description: weighted_mean_group no groupby simple case testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        values: [1.0, 2.0, 3.0, 4.0]
+        weights: [4.0, 3.0, 2.0, 1.0]
+    values: values
+    weights: weights
+    by: null
+  exp_err: False
+  expected_result: 2.0
+
+- description: weighted_mean_group uniform weights equals simple mean testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        values: [2.0, 4.0, 6.0]
+        weights: [1.0, 1.0, 1.0]
+    values: values
+    weights: weights
+    by: null
+  exp_err: False
+  expected_result: 4.0
+
+- description: weighted_mean_group single row returns that value testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        values: [7.0]
+        weights: [3.0]
+    values: values
+    weights: weights
+    by: null
+  exp_err: False
+  expected_result: 7.0

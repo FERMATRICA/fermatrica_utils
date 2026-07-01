@@ -1,0 +1,59 @@
+- description: round_up_to_odd rounds 2 to 3 testing case 0
+  params:
+    x: 2
+  exp_err: False
+  expected_result: 3
+
+- description: round_up_to_odd rounds 4 to 5 testing case 1
+  params:
+    x: 4
+  exp_err: False
+  expected_result: 5
+
+- description: round_up_to_odd rounds 5.1 to 7 testing case 2
+  params:
+    x: 5.1
+  exp_err: False
+  expected_result: 7
+
+- description: round_up_to_odd rounds 6 to 7 testing case 3
+  params:
+    x: 6
+  exp_err: False
+  expected_result: 7
+
+- description: round_up_to_odd odd integer 1 rounds to next odd testing case 4
+  params:
+    x: 1
+  exp_err: False
+  expected_result: 3
+
+- description: round_up_to_odd odd integer 3 rounds to next odd testing case 5
+  params:
+    x: 3
+  exp_err: False
+  expected_result: 5
+
+- description: round_up_to_odd zero returns one testing case 6
+  params:
+    x: 0
+  exp_err: False
+  expected_result: 1
+
+- description: round_up_to_odd float 2.5 rounds to 3 testing case 7
+  params:
+    x: 2.5
+  exp_err: False
+  expected_result: 3
+
+- description: round_up_to_odd negative minus-one returns 1 testing case 8
+  params:
+    x: -1
+  exp_err: False
+  expected_result: 1
+
+- description: round_up_to_odd odd integer 5 rounds to next odd testing case 9
+  params:
+    x: 5
+  exp_err: False
+  expected_result: 7

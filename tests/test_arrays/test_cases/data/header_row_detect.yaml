@@ -1,0 +1,28 @@
+- description: header_row_detect nan in first rows returns first non-nan index per column testing case 0
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [.nan, 1.0, 2.0]
+        b: [.nan, .nan, 3.0]
+  exp_err: False
+  expected_result: !np.array
+    object: [1, 2]
+
+- description: header_row_detect no nan rows returns zeros for all columns testing case 1
+  params:
+    ds: !pd.DataFrame
+      data:
+        a: [1.0, 2.0]
+        b: [3.0, 4.0]
+  exp_err: False
+  expected_result: !np.array
+    object: [0, 0]
+
+- description: header_row_detect single column with leading nans testing case 2
+  params:
+    ds: !pd.DataFrame
+      data:
+        col: [.nan, .nan, .nan, 5.0]
+  exp_err: False
+  expected_result: !np.array
+    object: [3]

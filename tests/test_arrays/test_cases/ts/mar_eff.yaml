@@ -1,0 +1,48 @@
+- description: mar_eff trailing window n=3 on pd.Series testing case 0
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0, 4.0, 5.0]
+    n: 3
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 1.5, 2.0, 3.0, 4.0]
+
+- description: mar_eff n=0 returns unchanged series testing case 1
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0]
+    n: 0
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 2.0, 3.0]
+
+- description: mar_eff float n rounds to nearest int testing case 2
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0, 4.0, 5.0]
+    n: 3.4
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 1.5, 2.0, 3.0, 4.0]
+
+- description: mar_eff n larger than series length uses min_periods=1 testing case 3
+  params:
+    sr: !pd.Series
+      data: [1.0, 2.0, 3.0, 4.0, 5.0]
+    n: 10
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 1.5, 2.0, 2.5, 3.0]
+
+- description: mar_eff list input returns same values as series input testing case 4
+  params:
+    sr:
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+    n: 3
+  exp_err: False
+  expected_result: !pd.Series
+    data: [1.0, 1.5, 2.0, 3.0, 4.0]
