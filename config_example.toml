@@ -1,0 +1,9 @@
+[paths]
+# Path to the Python executable within the Conda or other virtual environment.
+# Example: "C:\\Users\\username\\anaconda3\\envs\\my_fermatrica_env\\python.exe"
+python = "C:/path/to/anaconda3/envs/my_fermatrica_env/python.exe"
+
+[python]
+# Name of the Conda/virtual environment used for development with this repo.
+# Example: "my_fermatrica_env"
+env_name = "my_fermatrica_env"

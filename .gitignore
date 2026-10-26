@@ -11,6 +11,10 @@ tmp/
 *log.txt
 *~$*xlsx
 *.pclprof
+*.lprof
 *__pycache__
 *.egg-info/
 .vscode/
+
+# Local configuration (copied from config_example.toml)
+config.toml
