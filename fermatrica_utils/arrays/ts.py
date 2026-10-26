@@ -14,12 +14,86 @@ from packaging import version
 import statsmodels.tsa
 
 import fermatrica_utils
-from fermatrica_utils.flow import fermatrica_warner
+from fermatrica_utils.flow import fermatrica_warner, fermatrica_utils_error
+from fermatrica_utils.arrays.arrays import groupby_eff
+from fermatrica_utils.primitives.date import date_to_period, date_range
 
 
 """
 Time series decomposition in different ways
 """
+
+
+def date_range_to_periods(date_start: str | pd.Timestamp,
+                          date_end: str | pd.Timestamp,
+                          period: str = 'month'  # 'month' | 'week' | 'day'
+                          ) -> pd.DataFrame:
+    """
+    Split an inclusive date interval into per-period day counts and shares.
+
+    Returns one row per calendar period overlapping ``[date_start, date_end]``:
+    ``date`` — the period anchor (1st of month / Monday of the week / the day
+    itself), ``period`` — the granularity string, ``days`` — the number of
+    calendar days of the interval falling in that period, ``share`` — that
+    count divided by the total interval length (rows sum to 1.0).
+
+    Week anchors are Mondays and the emitted dates round-trip through the
+    ``%Y-W%W-%w`` parsing used by ``fermatrica_rep.options.define``.
+
+    :param date_start: first date of the interval (inclusive)
+    :param date_end: last date of the interval (inclusive)
+    :param period: 'month' (default), 'week' or 'day'
+    :return: DataFrame with columns ``date``, ``period``, ``days``, ``share``
+    :raises FermatricaUError: when ``date_end`` precedes ``date_start`` or the
+        ``period`` is not one of 'month', 'week', 'day'
+    """
+
+    period = period.lower()
+
+    if period not in ('month', 'week', 'day'):
+        fermatrica_utils_error(
+            f"date_range_to_periods: unknown period '{period}'. "
+            "Use 'month', 'week' or 'day'"
+        )
+
+    date_start = pd.to_datetime(date_start)
+    date_end = pd.to_datetime(date_end)
+
+    if date_end < date_start:
+        fermatrica_utils_error(
+            f"date_range_to_periods: date_end {date_end.date()} "
+            f"precedes date_start {date_start.date()}"
+        )
+
+    total_days = (date_end - date_start).days + 1
+
+    if period == 'day':
+        anchors = date_range(date_start, date_end, 'day')
+        offset = pd.DateOffset(days=1)
+    elif period == 'month':
+        first = date_to_period(pd.Series([date_start]), 'month').iloc[0]
+        anchors = date_range(first, date_end, 'month')
+        offset = pd.DateOffset(months=1)
+    else:  # week
+        first = date_to_period(pd.Series([date_start]), 'week').iloc[0]
+        anchors = date_range(first, date_end, 'week')
+        offset = pd.DateOffset(weeks=1)
+
+    rows = []
+    for anchor in anchors:
+        anchor = pd.Timestamp(anchor)
+        period_end = anchor + offset - pd.Timedelta(days=1)
+        ov_start = anchor if anchor > date_start else date_start
+        ov_end = period_end if period_end < date_end else date_end
+        days_in_period = (ov_end - ov_start).days + 1
+        rows.append({
+            'date': anchor,
+            'period': period,
+            'days': days_in_period,
+            'share': days_in_period / total_days,
+        })
+
+    return pd.DataFrame(rows, columns=['date', 'period', 'days', 'share'])
 
 
 def ts_decompose(ds: pd.DataFrame
@@ -79,14 +153,20 @@ def ts_decompose(ds: pd.DataFrame
     clnd = fermatrica_utils.primitives.date.date_range(ds.date.min(), ds.date.max(), period_var)
     clnd = pd.DataFrame(columns=["date"], data=clnd)
 
-    if ds['date'].dtype == 'timestamp[us][pyarrow]' and clnd['date'].dtype != 'timestamp[us][pyarrow]':
-        clnd['date'] = clnd['date'].astype('timestamp[us][pyarrow]')
+    if clnd['date'].dtype != ds['date'].dtype:
+        clnd['date'] = clnd['date'].astype(ds['date'].dtype)
 
     clnd = clnd.merge(ds, on="date", how='left')
 
-    clnd[group_vars[0]] = clnd[group_vars[0]].shift()
-    clnd.loc[clnd[group_vars[0]].isna(), "tmp"] = clnd.loc[clnd[group_vars[0]].isna(), "date"]
-
+    if group_vars[0] in clnd.columns:
+        clnd[group_vars[0]] = clnd[group_vars[0]].shift()
+        clnd.loc[clnd[group_vars[0]].isna(), "tmp"] = clnd.loc[clnd[group_vars[0]].isna(), "date"]
+    else:
+        clnd["_grp_marker"] = np.where(clnd[value_var].notna(), 1, np.nan)
+        clnd["_grp_marker"] = clnd["_grp_marker"].shift()
+        clnd.loc[clnd["_grp_marker"].isna(), "tmp"] = clnd.loc[clnd["_grp_marker"].isna(), "date"]
+        del clnd["_grp_marker"]
+    
     clnd["tmp"] = clnd["tmp"].ffill()
     gaps_grp = clnd.groupby("tmp")["tmp"].count()
     longest_interval = gaps_grp.loc[gaps_grp == gaps_grp.max()].index[0]
@@ -579,3 +659,34 @@ def trim_numeric_mask(x: pd.Series | np.ndarray
                 rtrn[i] = False
 
     return rtrn
+
+
+def ts_longest_interval(ttl: pd.DataFrame,
+                        group_vars: list,
+                        value_var: str = "units_ret",
+                        value_threshold: float | int = 50
+                        ) -> pd.DataFrame:
+    """
+    Compute per-group length of the longest uninterrupted sequence of valid
+    (above-threshold) values.
+
+    The result is a DataFrame with ``[group_vars..., 'NN']`` columns where
+    ``NN`` is the maximum number of consecutive time periods in which
+    ``value_var`` stays above ``value_threshold``.
+
+    :param ttl: source DataFrame with date, group and value columns
+    :param group_vars: list of column names that define a group
+    :param value_var: name of the value column that is checked against the threshold
+    :param value_threshold: values strictly above this threshold are considered valid
+    :return: DataFrame with ``group_vars`` and ``NN``
+    """
+
+    ds = groupby_eff(ttl, group_vars=["date"] + group_vars, other_vars=[value_var], as_index=False)[value_var].sum()
+    ds = ds.sort_values(group_vars + ["date"])
+
+    ds['_break'] = (ds[value_var] <= value_threshold).astype(int)
+    ds['_run_id'] = ds.groupby(group_vars)['_break'].cumsum()
+    ds = ds[ds[value_var] > value_threshold].groupby(group_vars + ['_run_id']).size().reset_index(name='NN')
+    ds = ds.groupby(group_vars, as_index=False)['NN'].max()
+
+    return ds

@@ -11,7 +11,7 @@ import sys
 import uuid
 
 import pandas as pd
-from line_profiler_pycharm import profile
+from line_profiler import profile
 
 
 class FermatricaUError(Exception):
@@ -37,15 +37,18 @@ def fermatrica_utils_error(msg):
 
 
 class ColoredFormatter(logging.Formatter):
-    """Logging formatter that renders WARNING-level messages in yellow."""
+    """Logging formatter that renders WARNING-level messages in a given colour."""
 
-    _YELLOW = '\033[33m'
     _RESET = '\033[0m'
+
+    def __init__(self, colour: str = '\033[33m'):
+        super().__init__()
+        self._colour = colour
 
     def format(self, record: logging.LogRecord) -> str:
         msg = super().format(record)
         if record.levelno == logging.WARNING:
-            return self._YELLOW + msg + self._RESET
+            return self._colour + msg + self._RESET
         return msg
 
 # Use a unique logger name to avoid collisions when users also call
@@ -58,6 +61,15 @@ _fermatrica_warner_handler = logging.StreamHandler()
 _fermatrica_warner_handler.setFormatter(ColoredFormatter())
 fermatrica_warner.addHandler(_fermatrica_warner_handler)
 fermatrica_warner.propagate = False
+
+_ORANGE = '\033[38;5;208m'
+
+_fermatrica_hard_logger_name = f'fermatrica_hard.{uuid.uuid4().hex[:8]}'
+fermatrica_hard_warner = logging.getLogger(_fermatrica_hard_logger_name)
+_fermatrica_hard_warner_handler = logging.StreamHandler()
+_fermatrica_hard_warner_handler.setFormatter(ColoredFormatter(colour=_ORANGE))
+fermatrica_hard_warner.addHandler(_fermatrica_hard_warner_handler)
+fermatrica_hard_warner.propagate = False
 
 
 @profile

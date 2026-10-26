@@ -104,7 +104,7 @@ def period_align(ds: pd.DataFrame,
                     dim_cols = []
 
                 if tmp['period'].dtype == 'timestamp[us][pyarrow]':
-                    tmp['period'] = tmp['period'].astype('datetime64[ns]')
+                    tmp['period'] = tmp['period'].astype('datetime64[us]')
 
                 tmp = clnd.merge(tmp, how='left', on=['period'] + dim_cols, sort=True)
                 tmp["N"] = tmp.groupby(['period'] + dim_cols)['period'].transform('count')
@@ -114,9 +114,9 @@ def period_align(ds: pd.DataFrame,
 
                 for col in keys[mask]:
                     if tmp[col].dtype in ['int64[pyarrow]', 'int64', int]:
-                        tmp[col] = tmp[col].astype('double[pyarrow]')
+                        tmp[col] = tmp[col].astype('float64')
 
-                tmp.loc[:, keys[mask]] = tmp.loc[:, keys[mask]].div(tmp["N"], axis=0)
+                tmp[keys[mask]] = tmp[keys[mask]].div(tmp["N"], axis=0)
                 tmp = tmp.groupby(['date'] + dim_cols).agg(vars_agg_dict).reset_index()
 
                 rtrn = pd.concat([rtrn, tmp])
@@ -142,20 +142,19 @@ def period_align(ds: pd.DataFrame,
                     dim_cols = []
 
                 if tmp['period'].dtype == 'timestamp[us][pyarrow]':
-                    tmp['period'] = tmp['period'].astype('datetime64[ns]')
+                    tmp['period'] = tmp['period'].astype('datetime64[us]')
 
                 tmp = clnd.merge(tmp, how='left', on=['period'] + dim_cols, sort=True)
-                tmp["N"] = pd.Series(tmp.groupby(['period'] + dim_cols)['period'].transform('count'),
-                                     dtype='double[pyarrow]')
+                tmp["N"] = tmp.groupby(['period'] + dim_cols)['period'].transform('count')
 
                 keys = np.array(list(vars_agg_dict.keys()))
                 mask = np.array([i == "sum" for i in vars_agg_dict.values()])
 
                 for col in keys[mask]:
                     if tmp[col].dtype in ['int64[pyarrow]', 'int64', int]:
-                        tmp[col] = tmp[col].astype('double[pyarrow]')
+                        tmp[col] = tmp[col].astype('float64')
 
-                tmp.loc[:, keys[mask]] = tmp.loc[:, keys[mask]].div(tmp["N"], axis=0)
+                tmp[keys[mask]] = tmp[keys[mask]].div(tmp["N"], axis=0)
 
                 tmp.loc[:, "date"] = date_to_period(tmp['date'], period_trg)
                 tmp = tmp.groupby(['date'] + dim_cols).agg(vars_agg_dict).reset_index()
@@ -191,7 +190,7 @@ def period_align(ds: pd.DataFrame,
                 dim_cols = []
 
             if tmp['period'].dtype == 'timestamp[us][pyarrow]':
-                tmp['period'] = tmp['period'].astype('datetime64[ns]')
+                tmp['period'] = tmp['period'].astype('datetime64[us]')
 
             tmp = clnd.merge(tmp, how='left', on=['period'] + dim_cols, sort=True)
             tmp["N"] = tmp.groupby(['period'] + dim_cols)['period'].transform('count')
@@ -201,17 +200,18 @@ def period_align(ds: pd.DataFrame,
 
             for col in keys[mask]:
                 if tmp[col].dtype in ['int64[pyarrow]', 'int64', int]:
-                    tmp[col] = tmp[col].astype('double[pyarrow]')
+                    tmp[col] = tmp[col].astype('float64')
 
-            tmp.loc[:, keys[mask]] = tmp.loc[:, keys[mask]].div(tmp["N"], axis=0)
+            tmp[keys[mask]] = tmp[keys[mask]].div(tmp["N"], axis=0)
 
             tmp.loc[:, "date"] = date_to_period(tmp['date'], "week")
             tmp = tmp.groupby(['date'] + dim_cols).agg(vars_agg_dict).reset_index()
 
             rtrn = pd.concat([rtrn, tmp])
 
-    if rtrn['date'].dtype != 'timestamp[us][pyarrow]':
-        rtrn['date'] = rtrn['date'].astype('timestamp[us][pyarrow]')
+    # us matches pandas-3 native datetime resolution and holds sentinel dates beyond the ns range
+    if rtrn['date'].dtype != 'datetime64[us]':
+        rtrn['date'] = rtrn['date'].astype('datetime64[us]')
 
     return rtrn
 
@@ -250,6 +250,8 @@ def ds_merge(ttl: pd.DataFrame,
         tmp['date'] = tmp['date'].astype('timestamp[us][pyarrow]')
     elif ttl['date'].dtype == 'datetime64[ns]' and tmp['date'].dtype != 'datetime64[ns]':
         tmp['date'] = tmp['date'].astype('datetime64[ns]')
+    elif ttl['date'].dtype == 'datetime64[us]' and tmp['date'].dtype != 'datetime64[us]':
+        tmp['date'] = tmp['date'].astype('datetime64[us]')
 
     if 'period' in tmp.columns.to_list() and 'period' in ttl.columns.to_list():
         del tmp['period']

@@ -80,30 +80,30 @@ class TestConvertPyarrowString:
 
     def test_all_string_cols_converted(self):
         pytest.importorskip('pyarrow')
-        ds = pd.DataFrame({'a': pd.array(['foo', 'bar'], dtype='string'), 'b': [1, 2]})
+        ds = pd.DataFrame({'a': pd.array(['foo', 'bar'], dtype='string[python]'), 'b': [1, 2]})
         result = data.convert_pyarrow_string(ds)
-        assert result['a'].dtype.storage == 'pyarrow'
+        assert str(result['a'].dtype) == 'str'
         assert result['b'].dtype == np.int64
 
     def test_ptrn_incl_limits_conversion(self):
         pytest.importorskip('pyarrow')
         ds = pd.DataFrame({
-            'keep_col': pd.array(['a', 'b'], dtype='string'),
-            'skip_col': pd.array(['c', 'd'], dtype='string'),
+            'keep_col': pd.array(['a', 'b'], dtype='string[python]'),
+            'skip_col': pd.array(['c', 'd'], dtype='string[python]'),
         })
         result = data.convert_pyarrow_string(ds, ptrn_incl='keep')
-        assert result['keep_col'].dtype.storage == 'pyarrow'
-        assert result['skip_col'].dtype.storage != 'pyarrow'
+        assert str(result['keep_col'].dtype) == 'str'
+        assert str(result['skip_col'].dtype) != 'str'
 
     def test_ptrn_excl_skips_matching_cols(self):
         pytest.importorskip('pyarrow')
         ds = pd.DataFrame({
-            'col_a': pd.array(['x', 'y'], dtype='string'),
-            'col_b': pd.array(['p', 'q'], dtype='string'),
+            'col_a': pd.array(['x', 'y'], dtype='string[python]'),
+            'col_b': pd.array(['p', 'q'], dtype='string[python]'),
         })
         result = data.convert_pyarrow_string(ds, ptrn_excl='col_b')
-        assert result['col_a'].dtype.storage == 'pyarrow'
-        assert result['col_b'].dtype.storage != 'pyarrow'
+        assert str(result['col_a'].dtype) == 'str'
+        assert str(result['col_b'].dtype) != 'str'
 
 
 class TestPandasForceMaterialize:

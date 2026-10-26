@@ -1,5 +1,5 @@
 python-dateutil>=2.9.0
-line_profiler_pycharm>=1.1.0
+line_profiler>=5.0
 pathlib>=1.0.1
 numpy>=1.25.2
 pandas>=2.0.3

@@ -1,0 +1,128 @@
+# Case 0: all values above threshold, single group → NN = total count
+- description: ts_longest_interval all values above threshold no break testing case 0
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01']
+        superbrand: ['SB1', 'SB1', 'SB1', 'SB1', 'SB1']
+        units_ret: [100, 120, 90, 110, 105]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1']
+      NN: [5]
+
+# Case 1: single break in the middle → two runs, NN = max run length
+- description: ts_longest_interval single value break middle testing case 1
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01', '2020-05-01']
+        superbrand: ['SB1', 'SB1', 'SB1', 'SB1', 'SB1']
+        units_ret: [100, 20, 100, 100, 100]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1']
+      NN: [3]
+
+# Case 2: alternating above/below → each run length 1 → NN = 1
+- description: ts_longest_interval alternating breaks longest run is one testing case 2
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01']
+        superbrand: ['SB1', 'SB1', 'SB1', 'SB1']
+        units_ret: [100, 10, 100, 10]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1']
+      NN: [1]
+
+# Case 3: two groups with different patterns
+- description: ts_longest_interval two groups different longest runs testing case 3
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01',
+               '2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01']
+        superbrand: ['SB1', 'SB1', 'SB1', 'SB1',
+                     'SB2', 'SB2', 'SB2', 'SB2']
+        units_ret: [100, 10, 100, 100,
+                    100, 100, 100, 100]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1', 'SB2']
+      NN: [2, 4]
+
+# Case 4: leading break — first value is below threshold
+- description: ts_longest_interval leading break testing case 4
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01']
+        superbrand: ['SB1', 'SB1', 'SB1', 'SB1']
+        units_ret: [10, 100, 100, 100]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1']
+      NN: [3]
+
+# Case 5: a single valid value above threshold, rest below → NN = 1
+- description: ts_longest_interval single valid value longest run is one testing case 5
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01', '2020-04-01']
+        superbrand: ['SB1', 'SB1', 'SB1', 'SB1']
+        units_ret: [100, 10, 20, 5]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1']
+      NN: [1]
+
+# Case 6: trailing break — last value below threshold
+- description: ts_longest_interval trailing break testing case 6
+  params:
+    df: !pd.DataFrame
+      data:
+        date: ['2020-01-01', '2020-02-01', '2020-03-01']
+        superbrand: ['SB1', 'SB1', 'SB1']
+        units_ret: [100, 100, 30]
+    group_vars:
+      - superbrand
+    value_var: units_ret
+    value_threshold: 50
+  exp_err: false
+  expected_result: !pd.DataFrame
+    data:
+      superbrand: ['SB1']
+      NN: [2]

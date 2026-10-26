@@ -3,7 +3,7 @@ Utilities for numerics (floats and integers) manipulation
 """
 
 
-from line_profiler_pycharm import profile
+from line_profiler import profile
 
 
 @profile

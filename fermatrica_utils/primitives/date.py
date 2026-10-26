@@ -10,7 +10,7 @@ import tarfile
 import urllib3
 
 import pandas as pd
-from line_profiler_pycharm import profile
+from line_profiler import profile
 
 
 @profile

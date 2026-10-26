@@ -15,7 +15,7 @@ class TestPeriodAlign:
         })
         result = merge.period_align(ds, 'month', {'value': 'sum'}, dim_cols=None)
         result = result.copy()
-        result['date'] = result['date'].astype('datetime64[ns]')
+        result['date'] = result['date'].astype('datetime64[us]')
         result = result.sort_values('date').reset_index(drop=True)
 
         expected = pd.DataFrame({
@@ -54,7 +54,7 @@ class TestPeriodAlign:
         })
         result = merge.period_align(ds, 'month', {'value': 'sum'}, dim_cols=['brand'])
         result = result.copy()
-        result['date'] = result['date'].astype('datetime64[ns]')
+        result['date'] = result['date'].astype('datetime64[us]')
         result = result.sort_values(['date', 'brand']).reset_index(drop=True)
 
         expected = pd.DataFrame({
@@ -64,21 +64,21 @@ class TestPeriodAlign:
         })
         pd.testing.assert_frame_equal(result, expected, check_dtype=False, check_like=True)
 
-    def test_returns_pyarrow_timestamp_date_column(self):
+    def test_returns_datetime64_us_date_column(self):
         ds = pd.DataFrame({
             'period': ['month'],
             'date': pd.to_datetime(['2023-03-01']),
             'value': [5.0]
         })
         result = merge.period_align(ds, 'month', {'value': 'sum'}, dim_cols=None)
-        assert str(result['date'].dtype) == 'timestamp[us][pyarrow]'
+        assert str(result['date'].dtype) == 'datetime64[us]'
 
 
 class TestDsMerge:
 
     def test_basic_merge_adds_column_to_ttl(self):
         ttl = pd.DataFrame({
-            'date': pd.to_datetime(['2023-01-01', '2023-01-01', '2023-02-01']).astype('datetime64[ns]'),
+            'date': pd.to_datetime(['2023-01-01', '2023-01-01', '2023-02-01']).astype('datetime64[us]'),
             'brand': ['A', 'B', 'A'],
             'sales': [100.0, 200.0, 150.0]
         })
@@ -98,7 +98,7 @@ class TestDsMerge:
 
     def test_merge_with_dim_group_column(self):
         ttl = pd.DataFrame({
-            'date': pd.to_datetime(['2023-01-01', '2023-01-01']).astype('datetime64[ns]'),
+            'date': pd.to_datetime(['2023-01-01', '2023-01-01']).astype('datetime64[us]'),
             'brand': ['A', 'B'],
             'sales': [100.0, 200.0]
         })
@@ -120,7 +120,7 @@ class TestDsMerge:
 
     def test_merge_preserves_ttl_row_count(self):
         ttl = pd.DataFrame({
-            'date': pd.to_datetime(['2023-01-01', '2023-01-15', '2023-02-01']).astype('datetime64[ns]'),
+            'date': pd.to_datetime(['2023-01-01', '2023-01-15', '2023-02-01']).astype('datetime64[us]'),
             'value': [1.0, 2.0, 3.0]
         })
         ds = pd.DataFrame({

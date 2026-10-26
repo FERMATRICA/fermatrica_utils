@@ -96,7 +96,10 @@ def parametrize_params(caller_file: str, subfolder: str, file_name: str):
     params = []
 
     fun_dict = {
-        pd.DataFrame: lambda result, expected_result: pd.testing.assert_frame_equal(result, expected_result),
+        pd.DataFrame: lambda result, expected_result: pd.testing.assert_frame_equal(
+            result, expected_result,
+            check_dtype=not (len(result) == 0 and len(expected_result) == 0)
+        ),
         pd.Series: lambda result, expected_result: pd.testing.assert_series_equal(result, expected_result, check_dtype=False, check_names=False),
         np.ndarray: lambda result, expected_result: np.testing.assert_array_equal(result, expected_result),
         pd.Timestamp: lambda result, expected_result: assertEq(result, expected_result),

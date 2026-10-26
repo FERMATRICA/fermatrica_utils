@@ -13,7 +13,7 @@ try:
     _zstd_available = True
 except ImportError:
     _zstd_available = False
-from line_profiler_pycharm import profile
+from line_profiler import profile
 import os
 import re
 import cyrtranslit
@@ -114,8 +114,9 @@ def convert_pyarrow_string(ds: pd.DataFrame
                            , ptrn_incl: str | None = None
                            , ptrn_excl: str | None = None) -> pd.DataFrame:
     """
-    Convert standard Pandas strings to PyArrow strings in columns selected by include and exclude patterns.
-    Use it PyArrow backend for Pandas is used (significantly faster for string operations at least)
+    Cast string columns to the pandas default `str` dtype in columns selected by include and
+    exclude patterns. Selection follows `is_string_dtype`, which recognizes an object column only
+    when every one of its values is a string.
 
     :param ds:
     :param ptrn_incl:
@@ -133,7 +134,7 @@ def convert_pyarrow_string(ds: pd.DataFrame
 
     for cl in cln:
         if is_string_dtype(ds[cl]):
-            ds[cl] = ds[cl].astype('string[pyarrow]')
+            ds[cl] = ds[cl].astype('str')
 
     return ds
 
@@ -147,14 +148,27 @@ class _PandasCompatUnpickler(pickle.Unpickler):
     """
 
     def find_class(self, module, name):
-    
+
+        if module == 'pandas.core.arrays.string_arrow' and name == 'ArrowStringArrayNumpySemantics':
+            from pandas.core.arrays.string_arrow import ArrowStringArray as Real
+            return Real
+
         if module == 'pandas.core.arrays.string_' and name == 'StringDtype':
-            from pandas.core.arrays.string_ import StringDtype as Real
-            def ctor(*args, **kwargs):
-                if len(args) > 1:  
-                    args = args[:1]
-                return Real(*args, **kwargs)
-            return ctor
+            from pandas.core.arrays.string_arrow import StringDtype as Real
+            class _StringDtypeCompat(Real):
+                def __init__(self, *args, **kwargs):
+                    if len(args) > 1:
+                        args = args[:1]
+                    super().__init__(*args, **kwargs)
+
+                def __setstate__(self, state):
+                    # pandas-2 'pyarrow_numpy' storage means pyarrow arrays with NaN
+                    # semantics, which pandas 3 expresses as storage='pyarrow' +
+                    # na_value=np.nan (its default 'str' dtype)
+                    if state.get('storage') == 'pyarrow_numpy':
+                        state = {**state, 'storage': 'pyarrow', '_na_value': np.nan}
+                    super().__setstate__(state)
+            return _StringDtypeCompat
         return super().find_class(module, name)
 
 

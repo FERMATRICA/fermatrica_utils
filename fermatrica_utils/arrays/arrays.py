@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import re
 
-from line_profiler_pycharm import profile
+from line_profiler import profile
 
 
 def step_generator(start: int | float

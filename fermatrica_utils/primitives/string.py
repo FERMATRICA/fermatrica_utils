@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import re
 
-from line_profiler_pycharm import profile
+from line_profiler import profile
 
 from fermatrica_utils.arrays.arrays import list_select
 from fermatrica_utils.flow import fermatrica_utils_error

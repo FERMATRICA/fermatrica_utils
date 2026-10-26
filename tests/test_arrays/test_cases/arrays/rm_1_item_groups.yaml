@@ -39,7 +39,7 @@
     data:
       brand: !pd.Series
         data: []
-        dtype: object
+        dtype: string
       value: !pd.Series
         data: []
         dtype: int64
